@@ -4,6 +4,7 @@ weapons
 
 SVG:
 saved as code, not svg images
+<svg xmlns="http://www.w3.org/2000/svg"></svg>
 
 VIDEOES:
 trailers
