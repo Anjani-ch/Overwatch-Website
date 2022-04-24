@@ -1,6 +1,5 @@
 IMAGES:
 abilities
-heroes
 weapons
 
 SVG:
