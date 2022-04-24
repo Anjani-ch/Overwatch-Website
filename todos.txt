@@ -1,9 +1,10 @@
 IMAGES:
 abilities
-endorsements (saved as svg code, not svg images)
 heroes
-roles (saved as svg code, not svg images)
 weapons
+
+SVG:
+saved as code, not svg images
 
 VIDEOES:
 trailers
@@ -12,3 +13,6 @@ shorts
 
 LINKS:
 https://overwatch.fandom.com/wiki/Category:Hero_images
+
+PNG COLOR CHANGER:
+https://codepen.io/sosuke/pen/Pjoqqp
