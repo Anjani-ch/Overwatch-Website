@@ -7,21 +7,23 @@ const asyncHandler = (callback: Function): any => {
         try {
             await callback(req, res);
         } catch (err: any) {
-            if(err.response) {     
-                const { status, statusText:msg }: APIRequestError = err.response;
+            let errResult: APIRequestError | null = null;
 
-                res.status(status).json({
-                    msg,
-                    status
-                });
+            if(err.response) {
+                const { status, statusText }: APIRequestError = err.response;
+                
+                errResult = {
+                    status,
+                    statusText
+                };
             } else {
-                const status = 404;
-
-                res.status(status).json({
-                    msg: err.message,
-                    status
-                });
+                errResult = {
+                    status: 404,
+                    statusText: err.message
+                };
             }
+
+            res.status(errResult.status).json(errResult?.statusText);
         }
     };
 

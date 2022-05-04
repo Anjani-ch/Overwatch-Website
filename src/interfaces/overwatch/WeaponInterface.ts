@@ -6,7 +6,7 @@ interface AttackType {
 interface Weapon {
     icon: URL,
     primary_fire: AttackType,
-    secondary_type: AttackType
+    secondary_type: AttackType | null
 };
 
 export default Weapon;
