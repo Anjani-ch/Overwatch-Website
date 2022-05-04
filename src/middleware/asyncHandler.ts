@@ -7,7 +7,7 @@ const asyncHandler = (callback: Function): any => {
         try {
             await callback(req, res);
         } catch (err: any) {
-            let errResult: APIRequestError | null = null;
+            let errResult: APIRequestError;
 
             if(err.response) {
                 const { status, statusText }: APIRequestError = err.response;
