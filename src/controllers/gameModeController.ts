@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 
 import asyncHandler from '../middleware/asyncHandler';
 
-import GameMode from '../interfaces/GameModeInterface';
+import GameMode from '../interfaces/overwatch/GameModeInterface';
 
 const endpoint: string = `${process.env.API_URL}/maps/gamemodes`;
 

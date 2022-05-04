@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
+import { getAllWeapons } from '../../controllers/weaponController';
+
 const router: Router = Router();
 
-router.get('/', async (req, res) => {
-    res.send('WEAPONS');
-});
+router.get('/', getAllWeapons);
 
 export default router;

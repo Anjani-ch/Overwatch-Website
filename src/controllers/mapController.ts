@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 
 import asyncHandler from '../middleware/asyncHandler';
 
-import Map from '../interfaces/MapInterface';
+import Map from '../interfaces/overwatch/MapInterface';
 
 const endpoint: string = `${process.env.API_URL}/maps`;
 

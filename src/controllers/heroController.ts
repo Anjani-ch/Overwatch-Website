@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 
 import asyncHandler from '../middleware/asyncHandler';
 
-import Hero from '../interfaces/HeroInterface';
+import Hero from '../interfaces/overwatch/HeroInterface';
 
 const endpoint: string = `${process.env.API_URL}/heroes`;
 
