@@ -1,6 +1,6 @@
 <template>
   <main class="main-wrapper container mx-auto">
-    <h1>Home</h1>
+    <h1>Heroes</h1>
   </main>
 </template>
 
@@ -8,6 +8,6 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'HomeView'
+  name: 'HeroesView'
 });
 </script>

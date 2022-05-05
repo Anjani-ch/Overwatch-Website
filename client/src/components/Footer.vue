@@ -1,0 +1,24 @@
+<template>
+    <footer class="p-4 bg-white rounded-lg border-t border-gray-300 font-medium md:p-6 dark:bg-gray-800">
+        <p class="text-center text-gray-700 dark:text-gray-400">
+            &copy; {{ year }} Anjani Chapparapu. All Rights Reserved.
+        </p>
+    </footer>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+    name: 'Footer',
+    setup() {
+        const date = new Date()
+
+        const year = date.getFullYear()
+
+        return {
+            year
+        }
+    }
+})
+</script>

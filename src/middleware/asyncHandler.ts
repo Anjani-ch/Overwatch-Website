@@ -23,10 +23,10 @@ const asyncHandler = (callback: Function): any => {
                 };
             }
 
-            res.status(errResult.status).json(errResult?.statusText);
+            res.status(errResult.status).json(errResult.statusText);
         }
     };
-
+    
     return handler;
 };
 
