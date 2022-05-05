@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import HeroesView from '../views/HeroesView.vue'
 import MapsView from '../views/MapsView.vue'
 import GameModesView from '../views/GameModesView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -25,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/game-modes',
     name: 'GameModes',
     component: GameModesView
+  },
+  {
+    path: '/:pathMatch(.*)',
+    name: '404',
+    component: NotFoundView
   }
 ]
 
