@@ -18,28 +18,16 @@ export default defineComponent({
             type: Boolean as PropType<boolean>,
             default: false
         },
-        addFlex: {
-            type: Boolean as PropType<boolean>,
-            default: false
-        },
         linkRoute: {
             type: String as PropType<string>,
             default: ''
         }
     },
-    setup({ addFlex, linkRoute }: { addFlex: boolean, linkRoute: string }) {
-        let buttonClasses: string = ''
-        let linkValue: string = linkRoute;
-
-        if(addFlex) {
-            buttonClasses = 'flex items-center'
-        }
-
-        buttonClasses += ' font-bold py-2 px-4 rounded bg-amber-500 text-white transition-colors ease-in hover:bg-amber-600'
+    setup() {
+        let buttonClasses: string = 'flex items-center font-bold py-2 px-4 rounded bg-amber-500 text-white transition-colors ease-in hover:bg-amber-600'
 
         return {
             buttonClasses,
-            linkValue
         }
     }
 })

@@ -4,4 +4,4 @@ interface Ability {
     icon: URL
 };
 
-export default Ability;
+export default Ability

@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import { Router } from 'express'
 
-import { getAllGameModes } from '../../controllers/gameModeController';
+import { getAllGameModes } from '../../controllers/gameModeController'
 
-const router: Router = Router();
+const router: Router = Router()
 
-router.get('/', getAllGameModes);
+router.get('/', getAllGameModes)
 
-export default router;
+export default router

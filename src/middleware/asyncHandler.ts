@@ -1,16 +1,16 @@
-import { Request, Response } from 'express';
+import { Request, Response } from 'express'
 
-import APIRequestError from '../interfaces/overwatch/APIRequestErrorInterface';
+import APIRequestError from '../interfaces/overwatch/APIRequestErrorInterface'
 
 const asyncHandler = (callback: Function): any => {
     const handler = async (req: Request, res: Response): Promise<void> => {
         try {
-            await callback(req, res);
+            await callback(req, res)
         } catch (err: any) {
-            let errResult: APIRequestError;
+            let errResult: APIRequestError
 
             if(err.response) {
-                const { status, statusText }: APIRequestError = err.response;
+                const { status, statusText }: APIRequestError = err.response
                 
                 errResult = {
                     status,
@@ -23,11 +23,11 @@ const asyncHandler = (callback: Function): any => {
                 };
             }
 
-            res.status(errResult.status).json(errResult.statusText);
+            res.status(errResult.status).json(errResult.statusText)
         }
     };
     
-    return handler;
+    return handler
 };
 
-export default asyncHandler;
+export default asyncHandler

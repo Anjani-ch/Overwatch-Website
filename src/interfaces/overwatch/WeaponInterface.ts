@@ -9,4 +9,4 @@ interface Weapon {
     secondary_type: AttackType | null
 };
 
-export default Weapon;
+export default Weapon

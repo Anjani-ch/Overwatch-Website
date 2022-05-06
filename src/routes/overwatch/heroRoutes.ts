@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router } from 'express'
 
-import { getAllHeroes, getHeroByID } from '../../controllers/heroController';
+import { getAllHeroes, getHeroByID } from '../../controllers/heroController'
 
-const router: Router = Router();
+const router: Router = Router()
 
-router.get('/', getAllHeroes);
+router.get('/', getAllHeroes)
 
-router.get('/:key', getHeroByID);
+router.get('/:key', getHeroByID)
 
-export default router;
+export default router

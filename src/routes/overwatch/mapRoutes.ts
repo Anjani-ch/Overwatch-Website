@@ -1,9 +1,9 @@
-import express, { Router } from 'express';
+import express, { Router } from 'express'
 
-import { getAllMaps } from '../../controllers/mapController';
+import { getAllMaps } from '../../controllers/mapController'
 
-const router: Router = express.Router();
+const router: Router = express.Router()
 
-router.get('/', getAllMaps);
+router.get('/', getAllMaps)
 
-export default router;
+export default router

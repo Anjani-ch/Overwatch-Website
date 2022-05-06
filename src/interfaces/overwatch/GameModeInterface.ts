@@ -4,4 +4,4 @@ interface GameMode {
     description: string
 };
 
-export default GameMode;
+export default GameMode

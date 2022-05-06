@@ -3,4 +3,4 @@ interface APIRequestError {
     statusText: string
 };
 
-export default APIRequestError;
+export default APIRequestError
