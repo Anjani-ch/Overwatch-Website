@@ -33,7 +33,7 @@ const routes: Array<RouteRecordRaw> & Route[] = [
     }
   },
   {
-    path: '/heroes/:key',
+    path: '/heroes/:id',
     name: 'Hero',
     component: HeroView,
     props: true
@@ -75,7 +75,7 @@ router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, n
   let title: string = ''
 
   const metaTitle: any = to.meta.title
-  const routeParamKey: any = to.params.key
+  const routeParamKey: any = to.params.id
 
   if(typeof routeParamKey === 'string') {
     title = routeParamKey.toUpperCase()
@@ -83,9 +83,7 @@ router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, n
     title = metaTitle
   }
 
-  title += ' | Overwatch'
-
-  document.title = title
+  document.title = `${title} | Overwatch`
   next()
 })
 

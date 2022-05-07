@@ -20,7 +20,7 @@ export default defineComponent({
         },
         linkRoute: {
             type: Object as PropType<{ name: string, params?: object }>,
-            default: ''
+            default: { name:'' }
         }
     },
     setup() {

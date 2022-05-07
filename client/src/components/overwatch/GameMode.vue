@@ -1,0 +1,32 @@
+<template>
+    <div class="w-full rounded overflow-hidden shadow-2xl mx-auto sm:mx-0">
+        <div class="block p-6 rounded-lg bg-white max-w-sm">
+            <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">{{ gameMode.name.toUpperCase() }}</h5>
+
+            <p class="text-gray-700 text-base">
+                {{ gameMode.description }}
+            </p>
+        </div>
+    </div>
+</template>
+
+<script lang="ts">
+import {  defineComponent, PropType } from 'vue'
+
+import GameMode from '@/interfaces/overwatch/GameModeInterface'
+
+export default defineComponent({
+    name: 'GameMode',
+    props: {
+        gameMode: {
+            type: Object as PropType<GameMode>,
+            required: true
+        }
+    },
+    setup({ gameMode }): object {
+        return {
+            gameMode
+        }
+    }
+})
+</script>

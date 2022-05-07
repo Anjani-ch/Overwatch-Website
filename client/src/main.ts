@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 
 import './assets/tailwind.css'
+import 'tw-elements';
 
 createApp(App)
     .use(store)
