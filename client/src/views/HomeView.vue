@@ -9,7 +9,7 @@
         </p>
         
         <div class="flex justify-center flex-wrap gap-6">
-          <Button isLink linkRoute="Heroes">Get Started</Button>
+          <Button isLink :linkRoute="{ name: 'Heroes' }">Get Started</Button>
         </div>
       </div>
 

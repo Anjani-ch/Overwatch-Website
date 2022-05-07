@@ -1,5 +1,5 @@
 <template>
-    <nav class="bg-white border-b border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+    <nav class="bg-white rounded border-b border-gray-200 px-2 py-2.5 mb-16 sm:px-4">
         <div class="container flex flex-wrap justify-between items-center">
             <!-- Nav Logo -->
             <router-link :to="{ name: 'Home' }" class="flex items-center">
@@ -43,7 +43,7 @@ import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
     name: 'Navbar',
-    setup() {
+    setup(): object {
         const isToggled = ref<boolean>(false)
 
         const navLinkClass: string = 'block py-2 pr-4 pl-3 text-gray-700 transition-colors ease-in hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-amber-500 md:p-0'

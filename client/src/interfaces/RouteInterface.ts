@@ -4,7 +4,8 @@ interface Route {
     path: string,
     name: string,
     component: Component,
-    meta: {
+    props?: boolean,
+    meta?: {
       title: string
     }
 }

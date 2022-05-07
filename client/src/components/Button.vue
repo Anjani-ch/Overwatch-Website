@@ -3,7 +3,7 @@
         <slot></slot>
     </button>
 
-    <router-link v-else :class="buttonClasses" :to="{ name: linkRoute }">
+    <router-link v-else :class="buttonClasses" :to="linkRoute">
         <slot></slot>
     </router-link>
 </template>
@@ -19,7 +19,7 @@ export default defineComponent({
             default: false
         },
         linkRoute: {
-            type: String as PropType<string>,
+            type: Object as PropType<{ name: string, params?: object }>,
             default: ''
         }
     },
