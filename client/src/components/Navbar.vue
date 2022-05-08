@@ -53,7 +53,7 @@ export default defineComponent({
     setup(): object {
         const isToggled = ref<boolean>(false)
 
-        const navLinkClass: string = 'block py-2 pr-4 pl-3 text-gray-700 transition-colors ease-in hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-amber-500 md:p-0'
+        const navLinkClass: string = 'block py-2 pr-4 pl-3 font-bold text-gray-700 transition-colors ease-in hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-amber-500 md:p-0'
         const navLinkActiveClass: string = '!text-white !bg-amber-500 !rounded md:!bg-transparent md:!text-amber-500 md:!p-0'
 
         const toggleNav = (): void => {

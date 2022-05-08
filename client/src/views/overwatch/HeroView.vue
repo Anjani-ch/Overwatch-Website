@@ -4,7 +4,7 @@
         <Error v-if="error" :error="error" />
 
         <section v-else-if="!isLoading">
-            <Carousel :items="hero.medias" />
+            <Carousel :items="filterMedia(hero.medias, 'pdf')" />
 
             <div class="grid gap-4 grid-rows-1 grid-cols-1 lg:grid-rows-2 lg:grid-cols-2">
                 <div>
@@ -124,13 +124,20 @@ export default defineComponent({
             return results
         }
 
+        const filterMedia = (medias: any[], filterVal: string): object[] => {
+            const result = medias.filter((media: any) => media.type !== filterVal)
+
+            return result
+        }
+
         load()
 
         return {
             isLoading,
             hero: data,
             error,
-            formatBiograpy
+            formatBiograpy,
+            filterMedia
         }
     }
 })

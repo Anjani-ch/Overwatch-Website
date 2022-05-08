@@ -8,8 +8,7 @@
             />
 
             <div class="carousel-caption hidden md:block absolute text-center">
-                <h5 class="text-xl">{{ `${item.title}` }}</h5>
-                <a :href="item.link" target="_blank">{{ item.link }}</a>
+                <h5 class="text-3xl">{{ `${item.title}` }}</h5>
             </div>
         </div>
     </div>

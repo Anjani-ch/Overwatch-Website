@@ -12,13 +12,7 @@ const getHero: Composable<string> = key => {
 
   const load = async (): Promise<void> => {
     try {
-      let result = (await axios.get('/api/overwatch/heroes/' + key)).data
-
-      result = {
-        ...result,
-        role: result.role[0].toUpperCase() + result.role.split('').splice(1).join(''),
-        medias: result.medias.filter((media: any) => media.type !== 'pdf')
-      }
+      const result = (await axios.get('/api/overwatch/heroes/' + key)).data
       
       data.value = result
     } catch (err: any) {
