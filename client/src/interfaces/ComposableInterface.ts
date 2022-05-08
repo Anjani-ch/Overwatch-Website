@@ -1,8 +1,8 @@
 import { Ref } from 'vue'
 import RequestError from '@/types/RequestError'
 
-interface Composable {
-    (param?: any): {
+interface Composable<T> {
+    (param?: T): {
         data: any,
         error: RequestError,
         isLoading: Ref<boolean>,

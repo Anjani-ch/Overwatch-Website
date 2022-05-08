@@ -5,7 +5,7 @@ import RequestError from '@/types/RequestError'
 import Map from '@/interfaces/overwatch/MapInterface'
 import Composable from '@/interfaces/ComposableInterface'
 
-const getMaps: Composable = () => {
+const getMaps: Composable<undefined> = () => {
   const isLoading = ref<boolean>(true)
   const data = ref<Map[]>()
   const error = ref<RequestError>()

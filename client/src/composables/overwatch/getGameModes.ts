@@ -5,7 +5,7 @@ import RequestError from '@/types/RequestError'
 import GameMode from '@/interfaces/overwatch/GameModeInterface'
 import Composable from '@/interfaces/ComposableInterface'
 
-const getGameModes: Composable = () => {
+const getGameModes: Composable<undefined> = () => {
   const isLoading = ref<boolean>(true)
   const data = ref<GameMode[]>()
   const error = ref<RequestError>()
