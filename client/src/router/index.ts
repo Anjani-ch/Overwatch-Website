@@ -11,6 +11,7 @@ import HeroesView from '../views/overwatch/HeroesView.vue'
 import HeroView from '../views/overwatch/HeroView.vue'
 import MapsView from '../views/overwatch/MapsView.vue'
 import GameModesView from '../views/overwatch/GameModesView.vue'
+import HostingDocsView from '../views/HostingDocsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 import Route from '@/interfaces/RouteInterface'
@@ -54,7 +55,11 @@ const routes: Array<RouteRecordRaw> & Route[] = [
       title: 'Game Modes'
     }
   },
-
+  {
+    path: '/hosting-docs',
+    name: 'HostingDocs',
+    component: HostingDocsView,
+  },
   {
     path: '/:pathMatch(.*)',
     name: '404',
@@ -81,6 +86,8 @@ router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, n
     title = routeParamKey.toUpperCase()
   } else if(typeof metaTitle === 'string') {
     title = metaTitle
+  } else {
+    title = 'Hosting Docs'
   }
 
   document.title = `${title} | Overwatch`

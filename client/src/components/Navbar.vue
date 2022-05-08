@@ -23,14 +23,21 @@
                     <li>
                         <router-link :to="{ name: 'Home' }" :class="navLinkClass" :active-class="navLinkActiveClass">Home</router-link>
                     </li>
+
                     <li>
                         <router-link :to="{ name: 'Heroes' }" :class="navLinkClass" :active-class="navLinkActiveClass">Heroes</router-link>
                     </li>
+
                     <li>
                         <router-link :to="{ name: 'Maps' }" :class="navLinkClass" :active-class="navLinkActiveClass">Maps</router-link>
                     </li>
+
                     <li>
                         <router-link :to="{ name: 'GameModes' }" :class="navLinkClass" :active-class="navLinkActiveClass">Game Modes</router-link>
+                    </li>
+
+                    <li>
+                        <router-link :to="{ name: 'HostingDocs' }" :class="navLinkClass" :active-class="navLinkActiveClass">Hosting</router-link>
                     </li>
                 </ul>
             </div>
