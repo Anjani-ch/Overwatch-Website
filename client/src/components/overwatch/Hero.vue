@@ -7,9 +7,9 @@
             <div class="font-bold text-xl mb-2 flex items-center justify-between">
                 <p>{{ hero.name.toUpperCase() }}</p>
 
-                <span class="px-4 py-2 rounded-md text-gray-500 bg-gray-300 font-semibold text-sm flex align-center w-max active:bg-gray-300 transition duration-300 ease">
+                <span class="font-semibold text-sm">
                 {{ hero.role.toUpperCase() }}
-            </span>
+                </span>
             </div>
         </div>
 

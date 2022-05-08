@@ -16,6 +16,7 @@ const getHero: Composable<string> = key => {
 
       result = {
         ...result,
+        role: result.role[0].toUpperCase() + result.role.split('').splice(1).join(''),
         medias: result.medias.filter((media: any) => media.type !== 'pdf')
       }
       
