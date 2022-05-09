@@ -50,6 +50,9 @@
             <br>
 
             <img src="../assets/gh-host-finished.png" alt="gh-host-finished">
+
+            <br>
+            <br>
         </section>
 
         <section class="mt-20">
@@ -69,7 +72,7 @@
 
             <br>
 
-            <img src="../assets/heroku-dashboard.png" alt="heroku-dashboard">
+            <img class="border-2 border-slate-900" src="../assets/heroku-dashboard.png" alt="heroku-dashboard">
 
             <br>
             <br>
@@ -79,7 +82,7 @@
 
             <br>
 
-            <img src="../assets/create-appname.png" alt="create-appname">
+            <img class="border-2 border-slate-900" src="../assets/create-appname.png" alt="create-appname">
 
             <br>
             <br>
@@ -89,13 +92,13 @@
 
             <br>
 
-            <img src="../assets/heroku-click-deploy.png" alt="heroku-click-deploy">
+            <img class="border-2 border-slate-900" src="../assets/heroku-click-deploy.png" alt="heroku-click-deploy">
 
             <br>
 
             <br>
             
-            <img src="../assets/heroku-connect-github.png" alt="heroku-connect-github">
+            <img class="border-2 border-slate-900" src="../assets/heroku-connect-github.png" alt="heroku-connect-github">
 
             <br>
             <br>
@@ -105,7 +108,7 @@
 
             <br>
 
-            <img src="../assets/heroku-authcate-github.png" alt="heroku-authcate-github">
+            <img class="border-2 border-slate-900" src="../assets/heroku-authcate-github.png" alt="heroku-authcate-github">
 
             <br>
             <br>
@@ -115,13 +118,13 @@
 
             <br>
 
-            <img src="../assets/heroku-search-repostory.png" alt="heroku-search-repostory">
+            <img class="border-2 border-slate-900" src="../assets/heroku-search-repostory.png" alt="heroku-search-repostory">
 
             <br>
             <br>
             <br>
 
-            <img src="../assets/heroku-connect-repository.png" alt="heroku-connect-repository">
+            <img class="border-2 border-slate-900" src="../assets/heroku-connect-repository.png" alt="heroku-connect-repository">
 
             <br>
             <br>
@@ -131,7 +134,7 @@
 
             <br>
 
-            <img src="../assets/heroku-deploy-reposotry.png" alt="heroku-deploy-reposotry">
+            <img class="border-2 border-slate-900" src="../assets/heroku-deploy-reposotry.png" alt="heroku-deploy-reposotry">
 
             <br>
             <br>
@@ -141,7 +144,7 @@
 
             <br>
 
-            <img src="../assets/heroku-successful-deploy.png" alt="heroku-successful-deploy">
+            <img class="border-2 border-slate-900" src="../assets/heroku-successful-deploy.png" alt="heroku-successful-deploy">
         </section>
 
         <section class="mt-20">
