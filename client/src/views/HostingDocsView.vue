@@ -53,6 +53,12 @@
 
             <br>
             <br>
+
+            <p class="text-lg">Here is a video going through GitHub Pages Hosting:</p>
+            
+            <br>
+            
+            <VideoJS id="gh-pages-vid" class="w-full" width="700" height="700" src="https://www.youtube.com/watch?v=SKXkC4SqtRk" />
         </section>
 
         <section class="mt-20">
@@ -145,6 +151,15 @@
             <br>
 
             <img class="border-2 border-slate-900" src="../assets/heroku-successful-deploy.png" alt="heroku-successful-deploy">
+
+            <br>
+            <br>
+
+            <p class="text-lg">Here is a video going through Heroku Hosting:</p>
+            
+            <br>
+            
+            <VideoJS id="heroku-vid" class="w-full" width="700" height="700" src="https://www.youtube.com/watch?v=r2S89Hm1Uq0" />
         </section>
 
         <section class="mt-20">
@@ -168,12 +183,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import Example from '@/components/Example.vue'
+import VideoJS from '@/components/VideoJS.vue'
 
 export default defineComponent({
     name: 'HostingDocsView',
     components: {
-        Example
+        VideoJS
     }
 })
 </script>
