@@ -1,7 +1,7 @@
 import { Ref } from 'vue'
 import RequestError from '@/types/RequestError'
 
-interface Composable<T> {
+interface IComposable<T> {
     (param?: T): {
         data: any,
         error: RequestError,
@@ -10,4 +10,4 @@ interface Composable<T> {
     }
 }
 
-export default Composable
+export default IComposable

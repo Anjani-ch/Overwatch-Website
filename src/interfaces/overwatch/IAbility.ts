@@ -1,7 +1,7 @@
-interface Ability {
+interface IAbility {
     name: string,
     description: string,
     icon: URL
 };
 
-export default Ability
+export default IAbility

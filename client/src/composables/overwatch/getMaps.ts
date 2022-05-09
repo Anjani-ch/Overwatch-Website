@@ -2,12 +2,12 @@ import axios, { AxiosError } from 'axios'
 import { ref } from 'vue'
 
 import RequestError from '@/types/RequestError'
-import Map from '@/interfaces/overwatch/MapInterface'
-import Composable from '@/interfaces/ComposableInterface'
+import IMap from '@/interfaces/overwatch/IMap'
+import IComposable from '@/interfaces/IComposable'
 
-const getMaps: Composable<undefined> = () => {
+const getMaps: IComposable<undefined> = () => {
   const isLoading = ref<boolean>(true)
-  const data = ref<Map[]>()
+  const data = ref<IMap[]>()
   const error = ref<RequestError>()
 
   const load = async (): Promise<void> => {

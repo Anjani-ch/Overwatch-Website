@@ -14,9 +14,9 @@ import GameModesView from '../views/overwatch/GameModesView.vue'
 import HostingDocsView from '../views/HostingDocsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
-import Route from '@/interfaces/RouteInterface'
+import IRoute from '@/interfaces/IRoute'
 
-const routes: Array<RouteRecordRaw> & Route[] = [
+const routes: Array<RouteRecordRaw> & IRoute[] = [
   {
     path: '/',
     name: 'Home',

@@ -3,14 +3,14 @@ import axios, { AxiosResponse } from 'axios'
 
 import asyncHandler from '../middleware/asyncHandler'
 
-import Map from '../interfaces/overwatch/MapInterface'
+import IMap from '../interfaces/overwatch/IMap'
 
 const endpoint: string = `${process.env.API_URL}/maps`
 
 const getAllMaps = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const axiosRes: AxiosResponse = await axios.get(endpoint)
 
-    const data: Map[] = axiosRes.data
+    const data: IMap[] = axiosRes.data
 
     if(!data || !data.length) {
         throw new Error('No data to display')

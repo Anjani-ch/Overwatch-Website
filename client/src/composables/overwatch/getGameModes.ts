@@ -2,12 +2,12 @@ import axios, { AxiosError } from 'axios'
 import { ref } from 'vue'
 
 import RequestError from '@/types/RequestError'
-import GameMode from '@/interfaces/overwatch/GameModeInterface'
-import Composable from '@/interfaces/ComposableInterface'
+import IGameMode from '@/interfaces/overwatch/IGameMode'
+import IComposable from '@/interfaces/IComposable'
 
-const getGameModes: Composable<undefined> = () => {
+const getGameModes: IComposable<undefined> = () => {
   const isLoading = ref<boolean>(true)
-  const data = ref<GameMode[]>()
+  const data = ref<IGameMode[]>()
   const error = ref<RequestError>()
 
   const load = async (): Promise<void> => {

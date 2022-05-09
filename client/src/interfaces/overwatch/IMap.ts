@@ -1,8 +1,8 @@
-interface Map {
+interface IMap {
     name: string,
     gamemodes: string[],
     thumbnail: URL,
     flag: URL
 };
 
-export default Map
+export default IMap

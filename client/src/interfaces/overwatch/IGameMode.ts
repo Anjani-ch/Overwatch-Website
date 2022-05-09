@@ -1,7 +1,7 @@
-interface GameMode {
+interface IGameMode {
     key: string,
     name: string,
     description: string
 };
 
-export default GameMode
+export default IGameMode

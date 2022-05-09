@@ -1,5 +1,5 @@
-import Weapon from './WeaponInterface'
-import Ability from './AbilityInterface'
+import IWeapon from './IWeapon'
+import IAbility from './IAbility'
 
 interface HeroStory {
     biography: {
@@ -27,8 +27,8 @@ interface Hero {
     description?: string,
     portrait?: URL,
     key?: string,
-    weapons?: Weapon[],
-    abilities?: Ability[],
+    weapons?: IWeapon[],
+    abilities?: IAbility[],
     story?: HeroStory,
     medias?: HeroMedia[]
 }

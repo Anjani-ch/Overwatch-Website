@@ -2,12 +2,12 @@ import axios, { AxiosError } from 'axios'
 import { ref } from 'vue'
 
 import RequestError from '@/types/RequestError'
-import Hero from '@/interfaces/overwatch/HeroInterface'
-import Composable from '@/interfaces/ComposableInterface'
+import IHero from '@/interfaces/overwatch/IHero'
+import IComposable from '@/interfaces/IComposable'
 
-const getHero: Composable<string> = key => {
+const getHero: IComposable<string> = key => {
   const isLoading = ref<boolean>(true)
-  const data = ref<Hero[]>()
+  const data = ref<IHero[]>()
   const error = ref<RequestError>()
 
   const load = async (): Promise<void> => {

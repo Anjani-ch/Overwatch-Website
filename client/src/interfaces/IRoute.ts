@@ -1,6 +1,6 @@
 import { Component } from 'vue'
 
-interface Route {
+interface IRoute {
     path: string,
     name: string,
     component: Component,
@@ -10,4 +10,4 @@ interface Route {
     }
 }
 
-export default Route
+export default IRoute

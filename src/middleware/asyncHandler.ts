@@ -1,16 +1,16 @@
 import { Request, Response } from 'express'
 
-import APIRequestError from '../interfaces/overwatch/APIRequestErrorInterface'
+import IAPIRequestError from '../interfaces/overwatch/IAPIRequestError'
 
 const asyncHandler = (callback: Function): any => {
     const handler = async (req: Request, res: Response): Promise<void> => {
         try {
             await callback(req, res)
         } catch (err: any) {
-            let errResult: APIRequestError
+            let errResult: IAPIRequestError
 
             if(err.response) {
-                const { status, statusText }: APIRequestError = err.response
+                const { status, statusText }: IAPIRequestError = err.response
                 
                 errResult = {
                     status,

@@ -1,7 +1,7 @@
-import Weapon from './WeaponInterface'
-import Ability from './AbilityInterface'
+import IWeapon from './IWeapon'
+import IAbility from './IAbility'
 
-interface HeroStory {
+interface IHeroStory {
     biography: {
         real_name: string,
         age: number,
@@ -13,24 +13,24 @@ interface HeroStory {
     back_story: string
 }
 
-interface HeroMedia {
+interface IHeroMedia {
     title: string,
     type: string,
     thumbnail: URL,
     link: URL
 }
 
-interface Hero {
+interface IHero {
     name: string,
     role: string,
     difficulty: number,
     description?: string,
     portrait?: URL,
     key?: string,
-    weapons?: Weapon[],
-    abilities?: Ability[],
-    story?: HeroStory,
-    medias?: HeroMedia[]
+    weapons?: IWeapon[],
+    abilities?: IAbility[],
+    story?: IHeroStory,
+    medias?: IHeroMedia[]
 }
 
-export default Hero
+export default IHero
