@@ -4,11 +4,11 @@
         <Error v-if="error" :error="error" />
 
         <section v-else-if="!isLoading">
-            <Carousel :items="filterMedia(hero.medias, 'pdf')" />
+            <Carousel class="hidden lg:block" :items="filterMedia(hero.medias, 'pdf')" />
 
             <div class="grid gap-4 grid-rows-1 grid-cols-1 lg:grid-rows-2 lg:grid-cols-2">
                 <div>
-                    <h1 class="text-3xl mt-9">Biography</h1>
+                    <h1 class="text-3xl mt-0 lg:mt-9">Biography</h1>
 
                     <p class="mt-3 italic">"{{ hero.story.catch_phrase }}"</p>
 
@@ -42,10 +42,10 @@
                 <div>
                     <h1 class="text-3xl mt-3 mb-5">Weapons</h1>
 
-                    <div v-for="(weapon, index) in hero.weapons" :key="weapon.name" class="flex items-center justify-between">
-                        <img class="flex-1 box-border pr-8" :src="weapon.icon" :alt="`weapon-${index + 1}`">
+                    <div v-for="(weapon, index) in hero.weapons" :key="weapon.name" class="flex flex-col justify-between lg:flex-row lg:items-center mb-12 lg:mb-0">
+                        <img class="box-border pr-8 lg:flex-1" :src="weapon.icon" :alt="`weapon-${index + 1}`">
 
-                        <div class="flex-1 box-border">
+                        <div class="box-border lg:flex-1">
                             <div class="mb-3" v-if="weapon.primary_fire">
                                 <h3 class="text-xl">{{ weapon.primary_fire.name }}</h3>
                                 <p>{{ weapon.primary_fire.description }}</p>
