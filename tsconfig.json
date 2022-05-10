@@ -12,6 +12,7 @@
     "skipLibCheck": true
   },
   "exclude": [
-    "client"
+    "client",
+    "node_modules"
   ]
 }
