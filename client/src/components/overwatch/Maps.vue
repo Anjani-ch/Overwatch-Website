@@ -14,7 +14,7 @@ import {  defineComponent, PropType } from 'vue'
 
 import MapComponent from '@/components/overwatch/Map.vue'
 
-import Map from '@/interfaces/overwatch/MapInterface'
+import IMap from '@/interfaces/overwatch/IMap'
 
 export default defineComponent({
     name: 'Maps',
@@ -23,7 +23,7 @@ export default defineComponent({
     },
     props: {
         maps: {
-            type: Array as PropType<Map[]>,
+            type: Array as PropType<IMap[]>,
             required: true
         }
     },

@@ -24,7 +24,7 @@ import {  defineComponent, PropType } from 'vue'
 
 import Button from '@/components/Button.vue'
 
-import Hero from '@/interfaces/overwatch/HeroInterface'
+import IHero from '@/interfaces/overwatch/IHero'
 
 export default defineComponent({
     name: 'Hero',
@@ -33,7 +33,7 @@ export default defineComponent({
     },
     props: {
         hero: {
-            type: Object as PropType<Hero>,
+            type: Object as PropType<IHero>,
             required: true
         }
     },

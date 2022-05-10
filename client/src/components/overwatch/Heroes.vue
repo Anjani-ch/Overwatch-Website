@@ -14,7 +14,7 @@ import {  defineComponent, PropType } from 'vue'
 
 import HeroComponent from '@/components/overwatch/Hero.vue'
 
-import Hero from '@/interfaces/overwatch/HeroInterface'
+import IHero from '@/interfaces/overwatch/IHero'
 
 export default defineComponent({
     name: 'Heroes',
@@ -23,7 +23,7 @@ export default defineComponent({
     },
     props: {
         heroes: {
-            type: Array as PropType<Hero[]>,
+            type: Array as PropType<IHero[]>,
             required: true
         }
     },

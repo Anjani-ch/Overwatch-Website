@@ -17,7 +17,7 @@
 <script lang="ts">
 import {  defineComponent, PropType } from 'vue'
 
-import Map from '@/interfaces/overwatch/MapInterface'
+import IMap from '@/interfaces/overwatch/IMap'
 import List from '@/components/List.vue'
 
 export default defineComponent({
@@ -27,7 +27,7 @@ export default defineComponent({
     },
     props: {
         map: {
-            type: Object as PropType<Map>,
+            type: Object as PropType<IMap>,
             required: true
         }
     },

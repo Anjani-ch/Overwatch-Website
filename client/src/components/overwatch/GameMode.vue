@@ -13,13 +13,13 @@
 <script lang="ts">
 import {  defineComponent, PropType } from 'vue'
 
-import GameMode from '@/interfaces/overwatch/GameModeInterface'
+import IGameMode from '@/interfaces/overwatch/IGameMode'
 
 export default defineComponent({
     name: 'GameMode',
     props: {
         gameMode: {
-            type: Object as PropType<GameMode>,
+            type: Object as PropType<IGameMode>,
             required: true
         }
     },

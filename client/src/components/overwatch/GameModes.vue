@@ -13,7 +13,7 @@ import {  defineComponent, PropType } from 'vue'
 
 import GameModeComponent from '@/components/overwatch/GameMode.vue'
 
-import GameMode from '@/interfaces/overwatch/GameModeInterface'
+import IGameMode from '@/interfaces/overwatch/IGameMode'
 
 export default defineComponent({
     name: 'GameModes',
@@ -22,7 +22,7 @@ export default defineComponent({
     },
     props: {
         gameModes: {
-            type: Array as PropType<GameMode[]>,
+            type: Array as PropType<IGameMode[]>,
             required: true
         }
     },
