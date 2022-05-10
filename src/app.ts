@@ -22,6 +22,11 @@ const overwatchApiRoot: string = '/api/overwatch'
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+// API Routes
+app.use(`${overwatchApiRoot}/heroes`, heroRoutes)
+app.use(`${overwatchApiRoot}/maps`, mapRoutes)
+app.use(`${overwatchApiRoot}/game-modes`, gameModeRoutes)
+
 // Render SPA Index In Production
 if(process.env.NODE_ENV === 'production') {
     // Set Static Folder
@@ -32,11 +37,6 @@ if(process.env.NODE_ENV === 'production') {
         res.sendFile(path.join(staticFolderPath, 'index.html'))
     });
 }
-
-// API Routes
-app.use(`${overwatchApiRoot}/heroes`, heroRoutes)
-app.use(`${overwatchApiRoot}/maps`, mapRoutes)
-app.use(`${overwatchApiRoot}/game-modes`, gameModeRoutes)
 
 // Handle Non-Existing Routes
 app.use(notFoundHandler)
