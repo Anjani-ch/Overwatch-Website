@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { getAllHeroes, getHeroByID } from '../../controllers/heroController'
+import { getAllHeroes, getHeroByID } from '../../controllers/overwatch/heroController'
 
 const router: Router = Router()
 

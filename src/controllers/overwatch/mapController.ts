@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import axios, { AxiosResponse } from 'axios'
 
-import asyncHandler from '../middleware/asyncHandler'
+import asyncHandler from '../../middleware/asyncHandler'
 
-import IMap from '../interfaces/overwatch/IMap'
+import IMap from '../../interfaces/overwatch/IMap'
 
 const endpoint: string = `${process.env.API_URL}/maps`
 

@@ -14,7 +14,7 @@
         </div>
 
         <div class="px-6 pt-4 pb-2">
-            <Button isLink :linkRoute="{ name: 'Hero', params: { id: hero.key } }">Details</Button>
+            <Button useFlex isLink :linkRoute="{ name: 'Hero', params: { id: hero.key } }">Details</Button>
         </div>
     </div>
 </template>

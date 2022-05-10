@@ -12,7 +12,7 @@
 
                     <p class="mt-3 italic">"{{ hero.story.catch_phrase }}"</p>
 
-                    <List :items="formatBiograpy(hero.story.biography)" list-style-classes="border-t border-b"  />
+                    <List :items="formatBiograpy(hero.story.biography)" list-style-classes="border-t-2 border-amber-500"  />
 
                     <Button class="mt-3" data-bs-toggle="modal" data-bs-target="#modal">View Story</Button>
 

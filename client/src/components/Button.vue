@@ -21,10 +21,18 @@ export default defineComponent({
         linkRoute: {
             type: Object as PropType<{ name: string, params?: object }>,
             default: { name:'' }
+        },
+        useFlex: {
+            type: Boolean as PropType<boolean>,
+            default: false
         }
     },
-    setup() {
-        let buttonClasses: string = 'flex items-center font-bold py-2 px-4 rounded bg-amber-500 text-white transition-colors ease-in hover:bg-amber-600'
+    setup({ useFlex }): object {
+        let buttonClasses: string = 'font-bold py-2 px-4 rounded bg-amber-500 text-white transition-colors ease-in hover:bg-amber-600'
+
+        if(useFlex) {
+            buttonClasses += ' flex items-center'
+        }
 
         return {
             buttonClasses,

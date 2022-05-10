@@ -1,9 +1,7 @@
 import {
   createRouter,
   createWebHistory,
-  RouteRecordRaw,
-  RouteLocationNormalized,
-  NavigationGuardNext
+  RouteRecordRaw
 } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
@@ -14,7 +12,8 @@ import GameModesView from '../views/overwatch/GameModesView.vue'
 import HostingDocsView from '../views/HostingDocsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
-import IRoute from '@/interfaces/IRoute'
+import IRoute from '@/interfaces/routes/IRoute'
+import INavGuard from '@/interfaces/routes/INavGuard'
 
 const routes: Array<RouteRecordRaw> & IRoute[] = [
   {
@@ -75,8 +74,7 @@ const router = createRouter({
   routes
 })
 
-// Update document title on route change
-router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
+const updateTitle: INavGuard = (to, from, next) => {
   let title: string = ''
 
   const metaTitle: any = to.meta.title
@@ -92,6 +90,9 @@ router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, n
 
   document.title = `${title} | Overwatch`
   next()
-})
+}
+
+// Update document title on route change
+router.beforeEach(updateTitle)
 
 export default router

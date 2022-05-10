@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import axios, { AxiosResponse } from 'axios'
 
-import asyncHandler from '../middleware/asyncHandler'
+import asyncHandler from '../../middleware/asyncHandler'
 
-import IGameMode from '../interfaces/overwatch/IGameMode'
+import IGameMode from '../../interfaces/overwatch/IGameMode'
 
 const endpoint: string = `${process.env.API_URL}/maps/gamemodes`
 

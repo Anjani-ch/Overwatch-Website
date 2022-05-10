@@ -24,6 +24,7 @@ export default defineComponent({
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background: rgb(236, 236, 236);
   }
 
   .main-wrapper {

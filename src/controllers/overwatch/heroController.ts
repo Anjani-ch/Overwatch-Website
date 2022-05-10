@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
 import axios, { AxiosResponse } from 'axios'
 
-import asyncHandler from '../middleware/asyncHandler'
+import asyncHandler from '../../middleware/asyncHandler'
 
-import Hero from '../interfaces/overwatch/HeroInterface'
+import Hero from '../../interfaces/overwatch/HeroInterface'
 
 const endpoint: string = `${process.env.API_URL}/heroes`
 
