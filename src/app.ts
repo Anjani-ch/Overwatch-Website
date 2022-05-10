@@ -14,9 +14,10 @@ const app: Application = express()
 
 const PORT: number | string = process.env.PORT || 3000
 
-const staticFolderPath: string = path.resolve(__dirname, '../public')
+const staticFolderPath: string = path.resolve(__dirname, '../dist/public')
 
 const overwatchApiRoot: string = '/api/overwatch'
+
 // Initialize Body-Parser
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
