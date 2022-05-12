@@ -20,24 +20,32 @@
 
             <div class="w-full md:block md:w-auto" id="menu">
                 <ul :class="[!isToggled ? 'hidden' : '', 'md:flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium']">
-                    <li>
+                    <li v-if="user">
                         <router-link :to="{ name: 'Home' }" :class="navLinkClass" :active-class="navLinkActiveClass">Home</router-link>
                     </li>
 
-                    <li>
+                    <li v-if="user">
                         <router-link :to="{ name: 'Heroes' }" :class="navLinkClass" :active-class="navLinkActiveClass">Heroes</router-link>
                     </li>
 
-                    <li>
+                    <li v-if="user">
                         <router-link :to="{ name: 'Maps' }" :class="navLinkClass" :active-class="navLinkActiveClass">Maps</router-link>
                     </li>
 
-                    <li>
+                    <li v-if="user">
                         <router-link :to="{ name: 'GameModes' }" :class="navLinkClass" :active-class="navLinkActiveClass">Game Modes</router-link>
                     </li>
 
-                    <li>
+                    <li v-if="user">
                         <router-link :to="{ name: 'HostingDocs' }" :class="navLinkClass" :active-class="navLinkActiveClass">Hosting</router-link>
+                    </li>
+
+                    <li v-if="!user">
+                        <router-link :to="{ name: 'Login' }" :class="navLinkClass" :active-class="navLinkActiveClass">Login</router-link>
+                    </li>
+
+                    <li v-if="!user">
+                        <router-link :to="{ name: 'Signup' }" :class="navLinkClass" :active-class="navLinkActiveClass">Signup</router-link>
                     </li>
                 </ul>
             </div>
@@ -56,7 +64,9 @@ export default defineComponent({
         const navLinkClass: string = 'block py-2 pr-4 pl-3 font-bold text-gray-700 transition-colors ease-in hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-amber-500 md:p-0'
         const navLinkActiveClass: string = '!text-white !bg-amber-500 !rounded md:!bg-transparent md:!text-amber-500 md:!p-0'
 
-        const toggleNav = (): void => {
+        const user: boolean = false
+
+        const toggleNav: Function = (): void => {
             isToggled.value = !isToggled.value
         }
         
@@ -64,7 +74,8 @@ export default defineComponent({
             isToggled,
             navLinkClass,
             navLinkActiveClass,
-            toggleNav
+            toggleNav,
+            user
         }
     }
 })

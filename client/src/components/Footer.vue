@@ -12,9 +12,9 @@ import { defineComponent } from 'vue'
 export default defineComponent({
     name: 'Footer',
     setup(): object {
-        const date = new Date()
+        const date: Date = new Date()
 
-        const year = date.getFullYear()
+        const year: number = date.getFullYear()
 
         return {
             year

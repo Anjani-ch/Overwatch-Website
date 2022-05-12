@@ -35,7 +35,7 @@ export default defineComponent({
         }
     },
     setup({ id, width, height, src }): object {
-        const dataSetup = `{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "${src}"}] }`
+        const dataSetup: string = `{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "${src}"}] }`
 
         return {
             id,

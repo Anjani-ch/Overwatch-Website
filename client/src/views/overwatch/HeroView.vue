@@ -111,7 +111,7 @@ export default defineComponent({
             load
         } = getHero(route.params.id as string)
 
-        const formatBiograpy = (biography: any): string[] => {
+        const formatBiograpy: Function = (biography: any): string[] => {
             const results: string[] = []
 
             for(const property in biography) {
@@ -124,7 +124,7 @@ export default defineComponent({
             return results
         }
 
-        const filterMedia = (medias: any[], filterVal: string): object[] => {
+        const filterMedia: Function = (medias: any[], filterVal: string): object[] => {
             const result = medias.filter((media: any) => media.type !== filterVal)
 
             return result

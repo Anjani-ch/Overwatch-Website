@@ -5,6 +5,8 @@ import {
 } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/auth/LoginView.vue'
+import SignupView from '../views/auth/SignupView.vue'
 import HeroesView from '../views/overwatch/HeroesView.vue'
 import HeroView from '../views/overwatch/HeroView.vue'
 import MapsView from '../views/overwatch/MapsView.vue'
@@ -22,6 +24,22 @@ const routes: Array<RouteRecordRaw> & IRoute[] = [
     component: HomeView,
     meta: {
       title: 'Home'
+    }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: LoginView,
+    meta: {
+      title: 'Login'
+    }
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: SignupView,
+    meta: {
+      title: 'Signup'
     }
   },
   {
@@ -92,7 +110,21 @@ const updateTitle: INavGuard = (to, from, next) => {
   next()
 }
 
+const handleAuthRoutes: INavGuard = (to, from, next) => {
+  next()
+}
+
+const handleNonAuthRoutes: INavGuard = (to, from, next) => {
+  next()
+}
+
 // Update document title on route change
 router.beforeEach(updateTitle)
+
+// Handle routes that require auth
+router.beforeEach(handleAuthRoutes)
+
+// Handle routes that do not require auth
+router.beforeEach(handleNonAuthRoutes)
 
 export default router

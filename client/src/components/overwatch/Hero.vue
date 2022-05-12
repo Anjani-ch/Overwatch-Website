@@ -4,13 +4,11 @@
         <img class="w-full" :src="hero.portrait" :alt="hero.name">
 
         <div class="px-6 pt-4">
-            <div class="font-bold text-xl mb-2 flex items-center justify-between">
-                <p>{{ hero.name.toUpperCase() }}</p>
-
-                <span class="font-semibold text-sm">
-                {{ hero.role.toUpperCase() }}
-                </span>
-            </div>
+            <p class="font-bold text-xl">{{ hero.name.toUpperCase() }}</p>
+            
+            <span class="font-semibold text-sm">
+                    {{ hero.role.toUpperCase() }}
+            </span>
         </div>
 
         <div class="px-6 pt-4 pb-2">
