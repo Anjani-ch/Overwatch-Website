@@ -7,6 +7,9 @@ import IMap from '../../interfaces/overwatch/IMap'
 
 const endpoint: string = `${process.env.API_URL}/maps`
 
+// @desc   Get Overwatch Maps
+// @route  GET /api/overwatch/maps
+// @access Private
 const getAllMaps = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const axiosRes: AxiosResponse = await axios.get(endpoint)
 

@@ -7,6 +7,9 @@ import Hero from '../../interfaces/overwatch/HeroInterface'
 
 const endpoint: string = `${process.env.API_URL}/heroes`
 
+// @desc   Get All Heroes
+// @route  GET /api/overwatch/heroes
+// @access Private
 const getAllHeroes = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const axiosRes: AxiosResponse = await axios.get(endpoint)
 
@@ -19,7 +22,10 @@ const getAllHeroes = asyncHandler(async (req: Request, res: Response): Promise<v
     res.json(data);
 });
 
-const getHeroByID = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+// @desc   Get Hero By Key
+// @route  GET /api/overwatch/:key
+// @access Private
+const getHeroByKey = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const axiosRes: AxiosResponse = await axios.get(`${endpoint}/${req.params.key}`)
 
     const data: Hero[] = axiosRes.data
@@ -33,5 +39,5 @@ const getHeroByID = asyncHandler(async (req: Request, res: Response): Promise<vo
 
 export {
     getAllHeroes,
-    getHeroByID
+    getHeroByKey
 };

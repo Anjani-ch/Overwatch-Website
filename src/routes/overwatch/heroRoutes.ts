@@ -1,11 +1,13 @@
 import { Router } from 'express'
 
-import { getAllHeroes, getHeroByID } from '../../controllers/overwatch/heroController'
+import { getAllHeroes, getHeroByKey } from '../../controllers/overwatch/heroController'
+
+import checkIfAuthenticated from '../../middleware/checkIfAuthenticated'
 
 const router: Router = Router()
 
-router.get('/', getAllHeroes)
+router.get('/', checkIfAuthenticated, getAllHeroes)
 
-router.get('/:key', getHeroByID)
+router.get('/:key', checkIfAuthenticated, getHeroByKey)
 
 export default router

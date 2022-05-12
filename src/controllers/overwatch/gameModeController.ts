@@ -7,6 +7,9 @@ import IGameMode from '../../interfaces/overwatch/IGameMode'
 
 const endpoint: string = `${process.env.API_URL}/maps/gamemodes`
 
+// @desc   Get Game-Modes
+// @route  GET /api/overwatch/game-modes
+// @access Private
 const getAllGameModes = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const axiosRes: AxiosResponse = await axios.get(endpoint)
 

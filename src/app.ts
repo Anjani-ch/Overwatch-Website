@@ -3,11 +3,14 @@ import 'dotenv/config'
 import express, { Application, Request, Response } from 'express'
 import path from 'path'
 
+import connectToDB from './config/db'
+
 import notFoundHandler from './middleware/notFoundHandler'
 
 import heroRoutes from './routes/overwatch/heroRoutes'
 import mapRoutes from './routes/overwatch/mapRoutes'
 import gameModeRoutes from './routes/overwatch/gameModeRoutes'
+import userRoutes from './routes/userRoutes'
 
 // Initialize Express App
 const app: Application = express()
@@ -26,6 +29,7 @@ app.use(express.json())
 app.use(`${overwatchApiRoot}/heroes`, heroRoutes)
 app.use(`${overwatchApiRoot}/maps`, mapRoutes)
 app.use(`${overwatchApiRoot}/game-modes`, gameModeRoutes)
+app.use('/api/users', userRoutes)
 
 // Render SPA Index In Production
 if(process.env.NODE_ENV === 'production') {
@@ -42,4 +46,10 @@ if(process.env.NODE_ENV === 'production') {
 app.use(notFoundHandler)
 
 // Start Server
-app.listen(PORT, () => console.log(`SERVER RUNNING ON PORT: ${PORT}`))
+connectToDB()
+    .then(() => {
+        app.listen(PORT, () => console.log(`SERVER RUNNING ON PORT: ${PORT}`))
+    })
+    .catch((err: any) => {
+        console.log(err)
+    })
