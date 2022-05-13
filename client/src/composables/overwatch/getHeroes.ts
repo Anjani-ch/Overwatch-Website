@@ -1,14 +1,14 @@
 import axios, { AxiosError } from 'axios'
-import { ref } from 'vue'
+import { ref, Ref } from 'vue'
 
 import RequestError from '@/types/RequestError'
 import IHero from '@/interfaces/overwatch/IHero'
 import IComposable from '@/interfaces/IComposable'
 
 const getHeroes: IComposable<undefined> = () => {
-    const isLoading = ref<boolean>(true)
-    const data = ref<IHero[]>()
-    const error = ref<RequestError>()
+    const isLoading: Ref = ref<boolean>(true)
+    const data: Ref = ref<IHero[]>()
+    const error: Ref = ref<RequestError>()
 
     const load = async (): Promise<void> => {
         try {

@@ -1,7 +1,7 @@
 <template>
     <main class="main-wrapper container">
         <Spinner v-if="isLoading" />
-        <Error v-if="error" :error="error" />
+        <Alert v-if="error" title="Error" type="error" :message="error" />
 
         <section v-else-if="!isLoading">
             <Carousel class="hidden lg:block" :items="filterMedia(hero.medias, 'pdf')" />
@@ -84,7 +84,7 @@ import { useRoute } from 'vue-router'
 
 import Spinner from '@/components/Spinner.vue'
 import Button from '@/components/Button.vue'
-import Error from '@/components/Error.vue'
+import Alert from '@/components/Alert.vue'
 import Carousel from '@/components/Carousel.vue'
 import List from '@/components/List.vue'
 import Modal from '@/components/Modal.vue'
@@ -96,7 +96,7 @@ export default defineComponent({
     components: {
         Spinner,
         Button,
-        Error,
+        Alert,
         Carousel,
         List,
         Modal

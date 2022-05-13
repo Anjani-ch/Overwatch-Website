@@ -1,6 +1,8 @@
 <template>
     <main class="main-wrapper container">
         <form @submit.prevent="login($event)" class="bg-white max-w-2xl mx-auto px-6 py-5 rounded-lg shadow-xl">
+            <Alert class="mb-6" @closeAlert="closeAlert" v-if="redirectMsg" :message="redirectMsg" :useClose="true" title="Success" type="success" />    
+
             <h1 class="text-3xl">Login</h1>
 
             <div class="form-group my-6">
@@ -59,18 +61,29 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, Ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 import Button from '@/components/Button.vue'
+import Alert from '@/components/Alert.vue'
 
 import LoginData from '@/types/auth/LoginData'
 
 export default defineComponent({
     name: 'Login',
     components: {
-        Button
+        Button,
+        Alert
     },
     setup(): object {
+        const { params: { redirectMsg:redirect } } = useRoute()
+
+        const redirectMsg: Ref = ref<string>('')
+
+        if(redirect) {
+            redirectMsg.value = redirect
+        }
+
         const login: Function = (e: Event) => {
             const { email, password } = e.target as any
 
@@ -82,8 +95,14 @@ export default defineComponent({
             console.log(data)
         }
 
+        const closeAlert: Function = () => {
+            redirectMsg.value = ''
+        }
+
         return {
-            login
+            login,
+            redirectMsg,
+            closeAlert
         }
     }
 })

@@ -1,7 +1,7 @@
 <template>
   <main class="main-wrapper container">
     <Spinner v-if="isLoading" />
-    <Error v-if="error" :error="error" />
+    <Alert v-if="error" title="Error" type="error" :message="error" />
     <Heroes v-else-if="!isLoading" :heroes="heroes" />
   </main>
 </template>
@@ -10,7 +10,7 @@
 import { defineComponent } from 'vue'
 
 import Spinner from '@/components/Spinner.vue'
-import Error from '@/components/Error.vue'
+import Alert from '@/components/Alert.vue'
 import Heroes from '@/components/overwatch/Heroes.vue'
 
 import getHeroes from '@/composables/overwatch/getHeroes'
@@ -19,7 +19,7 @@ export default defineComponent({
   name: 'HeroesView',
   components: {
     Spinner,
-    Error,
+    Alert,
     Heroes
   },
   setup(): object {

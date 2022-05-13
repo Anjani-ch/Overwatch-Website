@@ -28,7 +28,7 @@ export default defineComponent({
         }
     },
     setup({ useFlex }): object {
-        let buttonClasses: string = 'font-bold py-2 px-4 rounded bg-amber-500 text-white transition-colors ease-in hover:bg-amber-600'
+        let buttonClasses: string = 'font-bold py-2 px-4 rounded bg-amber-500 text-white transition-colors ease-in hover:bg-amber-600 disabled:opacity-75'
 
         if(useFlex) {
             buttonClasses += ' flex items-center'

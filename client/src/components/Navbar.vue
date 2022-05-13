@@ -54,17 +54,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed, ComputedRef } from 'vue'
+
+import { useStore } from '../store/store'
+
+import IUser from '@/interfaces/IUser'
 
 export default defineComponent({
     name: 'Navbar',
     setup(): object {
+        const store = useStore()
+
         const isToggled = ref<boolean>(false)
 
         const navLinkClass: string = 'block py-2 pr-4 pl-3 font-bold text-gray-700 transition-colors ease-in hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-amber-500 md:p-0'
         const navLinkActiveClass: string = '!text-white !bg-amber-500 !rounded md:!bg-transparent md:!text-amber-500 md:!p-0'
 
-        const user: boolean = false
+        const user: ComputedRef<IUser> = computed(() => store.state.user)
 
         const toggleNav: Function = (): void => {
             isToggled.value = !isToggled.value

@@ -1,14 +1,14 @@
 import axios, { AxiosError } from 'axios'
-import { ref } from 'vue'
+import { ref, Ref } from 'vue'
 
 import RequestError from '@/types/RequestError'
 import IMap from '@/interfaces/overwatch/IMap'
 import IComposable from '@/interfaces/IComposable'
 
 const getMaps: IComposable<undefined> = () => {
-  const isLoading = ref<boolean>(true)
-  const data = ref<IMap[]>()
-  const error = ref<RequestError>()
+  const isLoading: Ref = ref<boolean>(true)
+  const data: Ref = ref<IMap[]>()
+  const error: Ref = ref<RequestError>()
 
   const load = async (): Promise<void> => {
       try {
