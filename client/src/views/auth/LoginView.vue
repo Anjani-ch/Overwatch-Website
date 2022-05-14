@@ -85,7 +85,7 @@ export default defineComponent({
             }
         }
 
-        const closeAlert: Function = () => {
+        const closeAlert: Function = (): void => {
             redirectMsgRef.value = ''
             error.value = ''
         }

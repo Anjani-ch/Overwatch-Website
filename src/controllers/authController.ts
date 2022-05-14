@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import jwt, { JwtPayload, Secret, SignOptions } from 'jsonwebtoken'
 import { genSalt, hash, compare } from 'bcrypt'
 import speakeasy, { GeneratedSecret } from 'speakeasy'
+import QRCode from 'qrcode'
 
 import asyncHandler from '../middleware/asyncHandler'
 
@@ -36,6 +37,12 @@ const generateJWT: Function = (payload: JwtPayload): string => {
 
 const generateTwoFactorSecret: Function = (): GeneratedSecret => {
     const secret: GeneratedSecret = speakeasy.generateSecret()
+
+    QRCode.toDataURL(secret.otpauth_url as string, (err, dataUrl): void => {
+        if(err) throw err
+
+        secret.otpauth_url = dataUrl
+    })
 
     return secret
 }
