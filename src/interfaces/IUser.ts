@@ -1,11 +1,12 @@
-import { ObjectId } from 'mongoose'
+import { Document } from 'mongoose'
+import { GeneratedSecret } from 'speakeasy'
 
-interface IUser {
-    _id: ObjectId,
+interface IUser extends Document {
     username: string,
     email: string,
     password: string,
-    token: string
+    twoFactorTemp?: GeneratedSecret,
+    twoFactor?: GeneratedSecret
 }
 
 export default IUser

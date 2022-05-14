@@ -10,7 +10,8 @@ import User from '../models/User'
 import {
     hashPassword,
     compareHashedPasswords,
-    generateJWT
+    generateJWT,
+    generateTwoFactorSecret
 } from './authController'
 
 import ISignupData from '../interfaces/auth/ISignupData'
@@ -26,7 +27,8 @@ const signupUser = asyncHandler(async (req: Request, res: Response): Promise<voi
         username,
         email,
         password,
-        confirmPassword
+        confirmPassword,
+        twoFactor
     }: ISignupData = req.body
 
     const passwordMinChars: number = 6
@@ -68,18 +70,25 @@ const signupUser = asyncHandler(async (req: Request, res: Response): Promise<voi
     }
 
     // Validation Passed
-    user = await User.create({
+    user = new User({
         username,
         email,
         password: await hashPassword(password, 10)
     })
+
+    if(twoFactor === 'on') {
+        user.twoFactorTemp = generateTwoFactorSecret()
+    }
+
+    await user.save()
 
     // Check If Valid User
     if(user) {
         res.status(201).json({
             _id: user._id,
             username: user.username,
-            email: user.email
+            email: user.email,
+            twoFactor: user.twoFactorTemp ? user.twoFactorTemp : null
         })
     } else {
         throw new BadRequestError('Invalid user data')
@@ -110,7 +119,9 @@ const loginUser = asyncHandler(async (req: Request, res: Response): Promise<void
         _id: user._id,
         username: user.username,
         email: user.email,
-        token: generateJWT({ id: user._id })
+        token: generateJWT({ id: user._id }),
+        twoFactor: user.twoFactorTemp ? user.twoFactorTemp : user.twoFactor ? user.twoFactor : null,
+        isFirstLogin: user.twoFactorTemp ? true : false
     })
 })
 

@@ -16,6 +16,12 @@ const schema = new Schema<IUser>({
     password: {
         type: String,
         required: [true, 'Please add a password']
+    },
+    twoFactorTemp: {
+        type: Object,
+    },
+    twoFactor: {
+        type: Object,
     }
 },
 {
