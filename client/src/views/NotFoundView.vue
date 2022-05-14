@@ -5,7 +5,7 @@
         <h1 class="text-6xl mb-5">Page Not Found</h1>
         <p class="mb-4 font-bold">Sorry, we couldn't find the page you're looking for.</p>
 
-        <Button addFlex isLink :linkRoute="{ name: 'Home' }">
+        <Button useFlex isLink :linkRoute="{ name: 'Home' }">
             <span>Go back home</span>
 
             <!-- Right Arrow Icon -->
