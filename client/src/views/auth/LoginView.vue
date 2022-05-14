@@ -1,53 +1,15 @@
 <template>
     <main class="main-wrapper container">
-        <form @submit.prevent="login($event)" class="bg-white max-w-2xl mx-auto px-6 py-5 rounded-lg shadow-xl">
-            <Alert class="mb-6" @closeAlert="closeAlert" v-if="redirectMsg" :message="redirectMsg" :useClose="true" title="Success" type="success" />    
+        <FormContainer @submit.prevent="handleLogin($event)">
+            <Alert class="mb-6" @closeAlert="closeAlert" v-if="redirectMsgRef" :message="redirectMsgRef" :useClose="true" :title="redirectTitleRef" :type="redirectTypeRef" />
+            <Alert class="mb-6" @closeAlert="closeAlert" v-if="error" :message="error" :useClose="true" title="Error Loging In" type="error" />
 
             <h1 class="text-3xl">Login</h1>
 
-            <div class="form-group my-6">
-                <label for="email" class="form-label inline-block mb-2 text-gray-700 font-bold">Email address</label>
-                <input type="text" class="
-                    block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border-2 border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700 focus:bg-white focus:border-amber-500 focus:outline-none"
-                    id="email"
-                    name="email"
-                    placeholder="Enter Email">
-            </div>
+            <FormInput id="email" labelText="Email address" type="text" placeholder="Enter Email" />
+            <FormInput id="password" labelText="Password" type="password" placeholder="Enter Password" />
 
-            <div class="form-group mb-6">
-                <label for="password" class="form-label inline-block mb-2 text-gray-700 font-bold">Password</label>
-                <input type="password" class="
-                    block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border-2 border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700 focus:bg-white focus:border-amber-500 focus:outline-none"
-                    id="password"
-                    name="password"
-                    placeholder="Enter Password">
-            </div>
+            <Spinner class="mb-4" v-if="isLoading" />
 
             <Button type="submit" class="w-full">
                 Login
@@ -56,53 +18,86 @@
             <p class="text-center mt-6 font-bold">
                 Don't have an account? <router-link :to="{ name: 'Signup' }" class="text-blue-700">Signup</router-link>
             </p>
-        </form>
+        </FormContainer>
     </main>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, Ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter, Router } from 'vue-router'
 
+import { useStore } from '@/store/store'
+
+import FormContainer from '@/components/forms/FormContainer.vue'
+import FormInput from '@/components/forms/FormInput.vue'
 import Button from '@/components/Button.vue'
 import Alert from '@/components/Alert.vue'
+import Spinner from '@/components/Spinner.vue'
 
-import LoginData from '@/types/auth/LoginData'
+import ActionTypes from '@/enums/actionTypes'
 
 export default defineComponent({
     name: 'Login',
     components: {
+        FormContainer,
+        FormInput,
         Button,
-        Alert
+        Alert,
+        Spinner
     },
     setup(): object {
-        const { params: { redirectMsg:redirect } } = useRoute()
+        const router: Router = useRouter()
+        const { params: { redirectMsg, redirectType, redirectTitle } } = useRoute()
 
-        const redirectMsg: Ref = ref<string>('')
+        const store = useStore()
 
-        if(redirect) {
-            redirectMsg.value = redirect
+        const redirectMsgRef: Ref = ref<string>('')
+        const redirectTypeRef: Ref = ref<string>('')
+        const redirectTitleRef: Ref = ref<string>('')
+        const error: Ref = ref<string>('')
+        const isLoading: Ref = ref<boolean>(false)
+
+        if(redirectMsg) {
+            redirectMsgRef.value = redirectMsg
+            redirectTypeRef.value = redirectType
+            redirectTitleRef.value = redirectTitle
         }
 
-        const login: Function = (e: Event) => {
+        const handleLogin: Function = async (e: Event) => {
             const { email, password } = e.target as any
 
-            const data: LoginData = {
-                email: email.value,
-                password: password.value
-            }
+            redirectMsgRef.value = ''
+            isLoading.value = true
 
-            console.log(data)
+            try {
+                await store.dispatch(ActionTypes.LOGIN_USER, {
+                    email: email.value,
+                    password: password.value
+                })
+
+                router.push({ name: 'Home' })
+            } catch (err: any) {
+                const errMsg: string = (err.response && err.response.data && err.response.data.message) || err.message || err.toString()
+
+                error.value = errMsg
+            } finally {
+                isLoading.value = false
+            }
         }
 
         const closeAlert: Function = () => {
-            redirectMsg.value = ''
+            redirectMsgRef.value = ''
+            error.value = ''
         }
 
         return {
-            login,
-            redirectMsg,
-            closeAlert
+            handleLogin,
+            redirectMsgRef,
+            redirectTypeRef,
+            redirectTitleRef,
+            closeAlert,
+            error,
+            isLoading
         }
     }
 })

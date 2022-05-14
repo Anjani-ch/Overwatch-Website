@@ -4,6 +4,8 @@ import {
   RouteRecordRaw
 } from 'vue-router'
 
+import { useStore } from '@/store/store'
+
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import SignupView from '../views/auth/SignupView.vue'
@@ -16,6 +18,7 @@ import NotFoundView from '../views/NotFoundView.vue'
 
 import IRoute from '@/interfaces/routes/IRoute'
 import INavGuard from '@/interfaces/routes/INavGuard'
+import IUser from '@/interfaces/IUser'
 
 const routes: Array<RouteRecordRaw> & IRoute[] = [
   {
@@ -31,7 +34,8 @@ const routes: Array<RouteRecordRaw> & IRoute[] = [
     name: 'Login',
     component: LoginView,
     meta: {
-      title: 'Login'
+      title: 'Login',
+      requiresAuth: false
     }
   },
   {
@@ -39,7 +43,8 @@ const routes: Array<RouteRecordRaw> & IRoute[] = [
     name: 'Signup',
     component: SignupView,
     meta: {
-      title: 'Signup'
+      title: 'Signup',
+      requiresAuth: false
     }
   },
   {
@@ -47,21 +52,26 @@ const routes: Array<RouteRecordRaw> & IRoute[] = [
     name: 'Heroes',
     component: HeroesView,
     meta: {
-      title: 'Heroes'
+      title: 'Heroes',
+      requiresAuth: true
     }
   },
   {
     path: '/heroes/:id',
     name: 'Hero',
     component: HeroView,
-    props: true
+    props: true,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/maps',
     name: 'Maps',
     component: MapsView,
     meta: {
-      title: 'Maps'
+      title: 'Maps',
+      requiresAuth: true
     }
   },
   {
@@ -69,13 +79,18 @@ const routes: Array<RouteRecordRaw> & IRoute[] = [
     name: 'GameModes',
     component: GameModesView,
     meta: {
-      title: 'Game Modes'
+      title: 'Game Modes',
+      requiresAuth: true
     }
   },
   {
     path: '/hosting-docs',
     name: 'HostingDocs',
     component: HostingDocsView,
+    meta: {
+      title: 'Hosting',
+      requiresAuth: true
+    }
   },
   {
     path: '/:pathMatch(.*)',
@@ -111,11 +126,33 @@ const updateTitle: INavGuard = (to, from, next) => {
 }
 
 const handleAuthRoutes: INavGuard = (to, from, next) => {
-  next()
+  const store = useStore()
+
+  const authenticated: IUser | null = store.state.user
+  const requiresAuth = to.meta.requiresAuth as boolean | undefined
+
+  if(typeof requiresAuth === 'boolean' && !requiresAuth && authenticated) {
+    next({ name: 'Home' })
+  } else {
+    next()
+  }
 }
 
 const handleNonAuthRoutes: INavGuard = (to, from, next) => {
-  next()
+  const store = useStore()
+
+  const authenticated: IUser | null = store.state.user
+  const requiresAuth = to.meta.requiresAuth as boolean | undefined
+
+  if(typeof requiresAuth === 'boolean' && requiresAuth && !authenticated) {
+    next({ name: 'Login', params: {
+      redirectMsg: 'You have to log in to view that page',
+      redirectType: 'error',
+      redirectTitle: 'Access Denied'
+    } })
+  } else {
+    next()
+  }
 }
 
 // Update document title on route change

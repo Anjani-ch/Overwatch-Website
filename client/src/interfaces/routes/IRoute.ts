@@ -6,7 +6,8 @@ interface IRoute {
     component: Component,
     props?: boolean,
     meta?: {
-      title: string
+      title?: string,
+      requiresAuth?: boolean
     }
 }
 

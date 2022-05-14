@@ -16,7 +16,7 @@ const compareHashedPasswords: Function = async (plainText: string, hashed: strin
 
 const generateJWT: Function = (payload: JwtPayload): string => {
     const options: SignOptions = {
-        expiresIn: '30d'
+        expiresIn: '3h'
     }
 
     const result: string = jwt.sign(payload, process.env.JWT_SECRET as Secret, options)

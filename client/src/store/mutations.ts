@@ -9,7 +9,6 @@ import IUser from '@/interfaces/IUser'
 
 const mutations: MutationTree<IState> & Mutations = {
     [MutationTypes.SET_USER](state, payload: IUser) {
-        console.log(payload)
         state.user = payload
     }
 }
