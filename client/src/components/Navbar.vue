@@ -20,7 +20,7 @@
 
             <div class="w-full md:block md:w-auto" id="menu">
                 <ul :class="[!isToggled ? 'hidden' : '', 'md:flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium']">
-                    <li v-if="user">
+                    <li>
                         <router-link :to="{ name: 'Home' }" :class="navLinkClass" :active-class="navLinkActiveClass">Home</router-link>
                     </li>
 
@@ -40,6 +40,10 @@
                         <router-link :to="{ name: 'HostingDocs' }" :class="navLinkClass" :active-class="navLinkActiveClass">Hosting</router-link>
                     </li>
 
+                    <li @click="handleLogout" v-if="user">
+                        <button :class="navLinkClass" :active-class="navLinkActiveClass">Logout</button>
+                    </li>
+
                     <li v-if="!user">
                         <router-link :to="{ name: 'Login' }" :class="navLinkClass" :active-class="navLinkActiveClass">Login</router-link>
                     </li>
@@ -55,14 +59,18 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, ComputedRef } from 'vue'
+import { useRouter, Router } from 'vue-router'
 
 import { useStore } from '../store/store'
+import MutationTypes from '../enums/mutationTypes'
 
 import IUser from '@/interfaces/IUser'
 
 export default defineComponent({
     name: 'Navbar',
     setup(): object {
+        const router: Router = useRouter()
+
         const store = useStore()
 
         const isToggled = ref<boolean>(false)
@@ -75,12 +83,22 @@ export default defineComponent({
         const toggleNav: Function = (): void => {
             isToggled.value = !isToggled.value
         }
+
+        const handleLogout: Function = (): void => {
+            store.commit(MutationTypes.RESET_AUTH, null)
+            router.push({ name: 'Login', params: {
+                redirectMsg: 'You have been successfully logged out',
+                redirectType: 'success',
+                redirectTitle: 'Success'
+            }})
+        }
         
         return {
             isToggled,
             navLinkClass,
             navLinkActiveClass,
             toggleNav,
+            handleLogout,
             user
         }
     }

@@ -1,5 +1,5 @@
 import { ActionTree } from 'vuex'
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 
 import ActionTypes from '@/enums/actionTypes'
 import MutationTypes from '@/enums/mutationTypes'
@@ -19,8 +19,16 @@ const actions: ActionTree<IState, IState> & IActions = {
     async [ActionTypes.SIGNUP_USER](context, signupData) {
         await axios.post('/api/users/signup', signupData)
     },
-    async [ActionTypes.LOGOUT_USER](context) {
+    async [ActionTypes.VERIFY_TOKEN](context, token) {
+        const reqConfig: AxiosRequestConfig = {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+        
+        const { isValid } = (await axios.post('/api/token/verify', { token }, reqConfig)).data
 
+        return isValid
     }
 }
 

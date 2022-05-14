@@ -70,7 +70,7 @@ export default defineComponent({
                     redirectMsg: 'You are now signed up, and can log in',
                     redirectType: 'error',
                     redirectTitle: 'Account Created'
-                } })
+                }})
             } catch(err: any) {
                 const errMsg: string = (err.response && err.response.data && err.response.data.message) || err.message || err.toString()
 

@@ -8,6 +8,8 @@
 import { defineComponent } from 'vue'
 
 import { useStore } from './store/store'
+import ActionTypes from './enums/actionTypes'
+import MutationTypes from './enums/mutationTypes'
 
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
@@ -25,14 +27,23 @@ export default defineComponent({
 
     const userInStorage: IUser | null = JSON.parse(localStorage.getItem('user') as string)
 
-    store.commit('SET_USER', userInStorage)
+    const verifyUser: Function = async (): Promise<void> => {
+        try {
+          if(userInStorage) {
+            const isValid = await store.dispatch(ActionTypes.VERIFY_TOKEN, userInStorage.token)
 
-    // setTimeout(() => {
-    //   store.commit('SET_USER', {
-    //     username: '',
-    //     email: ''
-    //   })
-    // }, 5000)
+            if(isValid) {
+              store.commit(MutationTypes.SET_USER, userInStorage)
+            } else {
+              store.commit(MutationTypes.RESET_AUTH, null)
+            }
+          }
+        } catch (err) {
+          console.log(err)
+        }
+    }
+
+    verifyUser()
   }
 })
 </script>

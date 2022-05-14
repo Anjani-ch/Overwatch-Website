@@ -1,3 +1,4 @@
+import { Request, Response } from 'express'
 import jwt, { JwtPayload, Secret, SignOptions } from 'jsonwebtoken'
 import { genSalt, hash, compare } from 'bcrypt'
 
@@ -24,8 +25,26 @@ const generateJWT: Function = (payload: JwtPayload): string => {
     return result
 }
 
+const verifyJWT = (req: Request, res: Response) => {
+    let isValid: boolean = false
+
+    try {
+        // Verify Token
+        jwt.verify(req.body.token, process.env.JWT_SECRET as Secret)
+
+        isValid = true
+    } catch (err: any) {
+        isValid = false
+    } finally {
+        res.json({
+            isValid
+        })
+    }
+}
+
 export {
     hashPassword,
     compareHashedPasswords,
-    generateJWT
+    generateJWT,
+    verifyJWT
 }

@@ -11,7 +11,7 @@ const checkIfAuthenticated = asyncHandler(async (req: IAuthReq, res: Response, n
     const headerAuthorization: string | undefined = req.headers.authorization
 
     let token: string | undefined
-    console.log(token)
+
     if(headerAuthorization && headerAuthorization.startsWith('Bearer')) {
         try {
             // Get Token From Header
@@ -22,7 +22,6 @@ const checkIfAuthenticated = asyncHandler(async (req: IAuthReq, res: Response, n
 
             next()
         } catch (error) {
-            console.log('error')
             throw new UnauthorizedError('Not authorized to access this resource')
         }
     }

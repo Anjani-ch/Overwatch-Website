@@ -8,8 +8,12 @@ import IState from '@/interfaces/vuex/IState'
 import IUser from '@/interfaces/IUser'
 
 const mutations: MutationTree<IState> & Mutations = {
-    [MutationTypes.SET_USER](state, payload: IUser) {
+    [MutationTypes.SET_USER](state, payload: IUser | null) {
         state.user = payload
+    },
+    [MutationTypes.RESET_AUTH](state) {
+        state.user = null
+        localStorage.clear()
     }
 }
 

@@ -1,8 +1,6 @@
 import { ref, Ref } from 'vue'
 import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 
-import { useStore } from '@/store/store'
-
 import RequestError from '@/types/RequestError'
 import IMap from '@/interfaces/overwatch/IMap'
 import IComposable from '@/interfaces/IComposable'
@@ -13,7 +11,7 @@ const getMaps: IComposable<undefined> = () => {
   const error: Ref = ref<RequestError>()
 
   const load = async (): Promise<void> => {
-      const { state: { user: { token } } } = useStore()
+      const token = JSON.parse(localStorage.getItem('user') as string).token
 
       const reqConfig: AxiosRequestConfig = {
         headers: {

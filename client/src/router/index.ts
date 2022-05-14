@@ -126,9 +126,7 @@ const updateTitle: INavGuard = (to, from, next) => {
 }
 
 const handleAuthRoutes: INavGuard = (to, from, next) => {
-  const store = useStore()
-
-  const authenticated: IUser | null = store.state.user
+  const authenticated: IUser | null = JSON.parse(localStorage.getItem('user') as string)
   const requiresAuth = to.meta.requiresAuth as boolean | undefined
 
   if(typeof requiresAuth === 'boolean' && !requiresAuth && authenticated) {
@@ -139,9 +137,7 @@ const handleAuthRoutes: INavGuard = (to, from, next) => {
 }
 
 const handleNonAuthRoutes: INavGuard = (to, from, next) => {
-  const store = useStore()
-
-  const authenticated: IUser | null = store.state.user
+  const authenticated: IUser | null = JSON.parse(localStorage.getItem('user') as string)
   const requiresAuth = to.meta.requiresAuth as boolean | undefined
 
   if(typeof requiresAuth === 'boolean' && requiresAuth && !authenticated) {
@@ -149,7 +145,7 @@ const handleNonAuthRoutes: INavGuard = (to, from, next) => {
       redirectMsg: 'You have to log in to view that page',
       redirectType: 'error',
       redirectTitle: 'Access Denied'
-    } })
+    }})
   } else {
     next()
   }

@@ -1,7 +1,7 @@
 enum ActionTypes {
     LOGIN_USER = 'loginUser',
     SIGNUP_USER = 'signupUser',
-    LOGOUT_USER = 'logoutUser'
+    VERIFY_TOKEN = 'verifyToken'
 }
 
 export default ActionTypes
