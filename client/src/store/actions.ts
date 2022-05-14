@@ -38,7 +38,11 @@ const actions: ActionTree<IState, IState> & IActions = {
             updateAuthState()
         }
 
-        return { proceedToTwoFactor, userID: data._id, isFirstLogin: data.isFirstLogin }
+        return {
+            proceedToTwoFactor,
+            userID: data._id,
+            isFirstLogin: data.isFirstLogin
+        }
     },
     async [ActionTypes.SIGNUP_USER](context, signupData) {
         const user = (await axios.post('/api/users/signup', signupData)).data as IUser
