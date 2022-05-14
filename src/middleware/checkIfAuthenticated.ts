@@ -5,33 +5,24 @@ import asyncHandler from './asyncHandler'
 
 import UnauthorizedError from '../errors/UnauthorizedError'
 
-import User from '../models/User'
-
-import IUser from '../interfaces/IUser'
 import IAuthReq from '../interfaces/auth/IAuthReq'
 
 const checkIfAuthenticated = asyncHandler(async (req: IAuthReq, res: Response, next: NextFunction): Promise<void> => {
     const headerAuthorization: string | undefined = req.headers.authorization
 
     let token: string | undefined
-    
+    console.log(token)
     if(headerAuthorization && headerAuthorization.startsWith('Bearer')) {
         try {
             // Get Token From Header
             token = headerAuthorization.split(' ')[1]
 
             // Verify Token
-            const decoded: any = jwt.verify(token, process.env.JWT_SECRET as Secret)
-            
-            // Get User From JWT Payload
-            const user = await User.findById(decoded.id).select('-password') as IUser
-
-            // Save User In Req
-            console.log(user)
-            req.user = user
+            jwt.verify(token, process.env.JWT_SECRET as Secret)
 
             next()
         } catch (error) {
+            console.log('error')
             throw new UnauthorizedError('Not authorized to access this resource')
         }
     }

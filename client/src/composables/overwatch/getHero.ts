@@ -1,5 +1,7 @@
-import axios, { AxiosError } from 'axios'
 import { ref, Ref } from 'vue'
+import axios, { AxiosError, AxiosRequestConfig } from 'axios'
+
+import { useStore } from '@/store/store'
 
 import RequestError from '@/types/RequestError'
 import IHero from '@/interfaces/overwatch/IHero'
@@ -11,8 +13,16 @@ const getHero: IComposable<string> = key => {
   const error: Ref = ref<RequestError>()
 
   const load = async (): Promise<void> => {
+    const { state: { user: { token } } } = useStore()
+
+    const reqConfig: AxiosRequestConfig = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+
     try {
-      const result = (await axios.get('/api/overwatch/heroes/' + key)).data
+      const result = (await axios.get('/api/overwatch/heroes/' + key, reqConfig)).data
       
       data.value = result
     } catch (err: any) {
