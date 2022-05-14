@@ -30,7 +30,7 @@ export default defineComponent({
     const verifyUser: Function = async (): Promise<void> => {
         try {
           if(userInStorage) {
-            const isValid = await store.dispatch(ActionTypes.VERIFY_TOKEN, userInStorage.token)
+            const isValid = await store.dispatch(ActionTypes.VERIFY_JWT_TOKEN, userInStorage.token)
 
             if(isValid) {
               store.commit(MutationTypes.SET_USER, userInStorage)

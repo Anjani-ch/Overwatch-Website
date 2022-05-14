@@ -19,7 +19,7 @@ const actions: ActionTree<IState, IState> & IActions = {
     async [ActionTypes.SIGNUP_USER](context, signupData) {
         await axios.post('/api/users/signup', signupData)
     },
-    async [ActionTypes.VERIFY_TOKEN](context, token) {
+    async [ActionTypes.VERIFY_JWT_TOKEN](context, token) {
         const reqConfig: AxiosRequestConfig = {
           headers: {
             Authorization: `Bearer ${token}`

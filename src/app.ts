@@ -11,7 +11,8 @@ import heroRoutes from './routes/overwatch/heroRoutes'
 import mapRoutes from './routes/overwatch/mapRoutes'
 import gameModeRoutes from './routes/overwatch/gameModeRoutes'
 import userRoutes from './routes/userRoutes'
-import tokenRoutes from './routes/tokenRoutes'
+import tokenRoutes from './routes/auth/tokenRoutes'
+import twoFactorRoutes from './routes/auth/twoFactorRoutes'
 
 // Initialize Express App
 const app: Application = express()
@@ -32,6 +33,7 @@ app.use(`${overwatchApiRoot}/maps`, mapRoutes)
 app.use(`${overwatchApiRoot}/game-modes`, gameModeRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/token', tokenRoutes)
+app.use('/api/2fa', twoFactorRoutes)
 
 // Render SPA Index In Production
 if(process.env.NODE_ENV === 'production') {

@@ -1,6 +1,6 @@
 import express, { Router } from 'express'
 
-import { verifyJWT } from '../controllers/authController'
+import { verifyJWT } from '../../controllers/authController'
 
 const router: Router = express.Router()
 
