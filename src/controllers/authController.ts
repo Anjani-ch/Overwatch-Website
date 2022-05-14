@@ -47,6 +47,9 @@ const generateTwoFactorSecret: Function = (): GeneratedSecret => {
     return secret
 }
 
+// @desc   Verify JWT Token
+// @route  GET /api/token/verify
+// @access Public
 const verifyJWT = (req: Request, res: Response) => {
     let isValid: boolean = false
 
@@ -64,6 +67,9 @@ const verifyJWT = (req: Request, res: Response) => {
     }
 }
 
+// @desc   Verify 2FA Token For First Time Login
+// @route  GET /api/2fa/verify
+// @access Public
 const verifyTwoFactorToken = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const { token, userID } = req.body
     
@@ -110,6 +116,9 @@ const verifyTwoFactorToken = asyncHandler(async (req: Request, res: Response): P
     }
 })
 
+// @desc   Validate 2FA Token
+// @route  GET /api/2fa/validate
+// @access Public
 const validateTwoFactorToken = asyncHandler(async (req: Request, res: Response): Promise<void> => {
     const { token, userID } = req.body
     

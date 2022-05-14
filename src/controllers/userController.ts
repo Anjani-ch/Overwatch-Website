@@ -119,7 +119,9 @@ const loginUser = asyncHandler(async (req: Request, res: Response): Promise<void
         _id: user._id,
         username: user.username,
         email: user.email,
-        token: generateJWT({ id: user._id })
+        token: generateJWT({ id: user._id }),
+        twoFactor: user.twoFactorTemp ? user.twoFactorTemp : user.twoFactor ? user.twoFactor : null,
+        isFirstLogin: user.twoFactorTemp ? true : false
     })
 })
 

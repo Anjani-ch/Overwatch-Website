@@ -3,7 +3,7 @@ interface IUser {
     username: string,
     email: string,
     token: string,
-    twoFactor: object | null
+    twoFactor?: object | null
 }
 
 export default IUser

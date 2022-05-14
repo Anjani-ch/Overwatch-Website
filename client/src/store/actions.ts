@@ -12,10 +12,33 @@ const actions: ActionTree<IState, IState> & IActions = {
     async [ActionTypes.LOGIN_USER](context, loginData) {
         const { data } = await axios.post('/api/users/login', loginData)
 
-        if(data) {
-            localStorage.setItem('user', JSON.stringify(data))
-            context.commit(MutationTypes.SET_USER, data)
+        const updateAuthState: Function = (): void => {
+            const dataToSave: IUser = {
+                email: data.email,
+                username: data.username,
+                token: data.token,
+                _id: data._id
+            }
+
+            localStorage.setItem('user', JSON.stringify(dataToSave))
+            context.commit(MutationTypes.SET_USER, dataToSave)
         }
+
+        let proceedToTwoFactor: boolean | undefined
+
+        if(data.twoFactor) {
+            proceedToTwoFactor = true
+        } else {
+            proceedToTwoFactor = false
+        }
+
+        if(data.twoFactor && loginData.isTwoFactorValid) {
+            updateAuthState()
+        } else if(data && !data.twoFactor) {
+            updateAuthState()
+        }
+
+        return { proceedToTwoFactor, userID: data._id, isFirstLogin: data.isFirstLogin }
     },
     async [ActionTypes.SIGNUP_USER](context, signupData) {
         const user = (await axios.post('/api/users/signup', signupData)).data as IUser

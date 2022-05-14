@@ -47,14 +47,15 @@ import { useRouter, Router } from 'vue-router'
 
 import { useStore } from '@/store/store'
 
-import SignupData from '@/types/auth/SignupData'
-import ActionTypes from '@/enums/actionTypes'
-
 import FormContainer from '@/components/forms/FormContainer.vue'
 import FormInput from '@/components/forms/FormInput.vue'
 import Button from '@/components/Button.vue'
 import Alert from '@/components/Alert.vue'
 import Spinner from '@/components/Spinner.vue'
+
+import SignupData from '@/types/auth/SignupData'
+import ActionTypes from '@/enums/actionTypes'
+import IUser from '@/interfaces/IUser'
 
 export default defineComponent({
     name: 'Signup',
