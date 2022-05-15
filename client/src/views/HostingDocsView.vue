@@ -70,6 +70,8 @@
 
             <br>
 
+            <h3 class="text-3xl mb-3">Connecting with GitHub</h3>
+
             <p class="text-lg">Before proceeding you need to make sure all your code is ina public GitHub repo, and that you have an Heroku account.</p>
 
             <br>
@@ -158,7 +160,60 @@
             <p class="text-lg">Here is a video going through Heroku Hosting:</p>
             
             <br>
+
+            <h3 class="text-3xl mb-3">Using Heroku CLI</h3>
+
+            <p>First we need to install the heroku CLI</p>
+
+            <TerminalExample>
+                <p>npm i -g heroku</p>
+            </TerminalExample>
+
+            <br>
+
+            <p>To access out heroku project we need to login using the CLI. You will either be promted to enter you credentials into the CLI, or have the option logging in using the browser.</p>
+
+            <TerminalExample>
+                <p>heroku login</p>
+            </TerminalExample>
+
+            <br>
+
+            <p>Then we need to intitialize a git repo</p>
+
+            <TerminalExample>
+                <p>git init</p>
+            </TerminalExample>
+
+            <br>
+
+            <p>After that we need to set heroku as a remote on ou repo.</p>
+
+            <TerminalExample>
+                <p>heroku git:remote - a '&lt;herouku_app_name&gt;'</p>
+            </TerminalExample>
+
+            <br>
+
+            <p>Then we are ready to deploy. All we need to do not is the standard GitHub procedure. NB: (add node_modules to .gitignore, deployment branch must me "master")</p>
+
+            <TerminalExample>
+                <p>git add .</p>
+                <p>git commit -m '&lt;comment&gt;'</p>
+                <p>git push heroku master</p>
+            </TerminalExample>
+
+            <br>
             
+            <p>Your app is now deployed. You can open the app from your heroku dashboard, or from the command line.</p>
+
+            <TerminalExample>
+                <p>heroku open</p>
+            </TerminalExample>
+            
+            <br>
+            <br>
+
             <VideoJS id="heroku-vid" class="w-full" width="700" height="700" src="https://www.youtube.com/watch?v=r2S89Hm1Uq0" />
         </section>
 
@@ -184,11 +239,13 @@
 import { defineComponent } from 'vue'
 
 import VideoJS from '@/components/VideoJS.vue'
+import TerminalExample from '@/components/TerminalExample.vue'
 
 export default defineComponent({
     name: 'HostingDocsView',
     components: {
-        VideoJS
+        VideoJS,
+        TerminalExample
     }
 })
 </script>
