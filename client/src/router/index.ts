@@ -4,8 +4,6 @@ import {
   RouteRecordRaw
 } from 'vue-router'
 
-import { useStore } from '@/store/store'
-
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/auth/LoginView.vue'
 import SignupView from '../views/auth/SignupView.vue'

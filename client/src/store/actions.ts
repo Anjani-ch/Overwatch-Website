@@ -45,16 +45,20 @@ const actions: ActionTree<IState, IState> & IActions = {
 
         return user
     },
-    async [ActionTypes.VERIFY_JWT_TOKEN](context, token) {
+    async [ActionTypes.VERIFY_JWT_TOKEN](context, userData) {
         const reqConfig: AxiosRequestConfig = {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${userData.token}`
           }
         }
         
-        const { isValid } = (await axios.post('/api/token/verify', { token }, reqConfig)).data
+        const { isValid } = (await axios.post('/api/token/verify', { token: userData.token }, reqConfig)).data
 
-        return isValid
+        if(isValid) {
+            context.commit(MutationTypes.SET_USER, userData)
+        } else {
+            context.commit(MutationTypes.RESET_AUTH, null)
+        }
     }
 }
 

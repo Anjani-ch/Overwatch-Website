@@ -9,7 +9,7 @@ import IUser from '../IUser'
 interface IActions {
     [ActionTypes.LOGIN_USER](context: AugmentedActionContext, payload: LoginData): Promise<object>,
     [ActionTypes.SIGNUP_USER](context: AugmentedActionContext, payload: SignupData): Promise<IUser>,
-    [ActionTypes.VERIFY_JWT_TOKEN](context: AugmentedActionContext, payload: string): Promise<void>
+    [ActionTypes.VERIFY_JWT_TOKEN](context: AugmentedActionContext, payload: IUser): Promise<void>
 }
 
 export default IActions

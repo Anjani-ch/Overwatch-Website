@@ -1,4 +1,5 @@
 import { ref, Ref } from 'vue'
+import { useRouter, Router } from 'vue-router'
 import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 
 import RequestError from '@/types/RequestError'
@@ -11,6 +12,8 @@ const getGameModes: IComposable<undefined> = () => {
   const error: Ref = ref<RequestError>()
 
   const load = async (): Promise<void> => {
+      const router: Router = useRouter()
+
       const token = JSON.parse(localStorage.getItem('user') as string).token
 
       const reqConfig: AxiosRequestConfig = {
@@ -24,7 +27,13 @@ const getGameModes: IComposable<undefined> = () => {
           
           data.value = results
         } catch (err: any) {
-          if(err.response.status === 500) {
+          if(err.response.status === 401) {
+            router.push({ name: 'Login', params: {
+              redirectMsg: 'You have to log in to view that page',
+              redirectType: 'error',
+              redirectTitle: 'Access Denied'
+            }})
+          } else if(err.response.status === 500) {
             error.value = 'Error getting maps'
           } else if(err instanceof AxiosError) {
             error.value = err.message

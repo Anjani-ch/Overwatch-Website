@@ -9,7 +9,6 @@ import { defineComponent } from 'vue'
 
 import { useStore } from './store/store'
 import ActionTypes from './enums/actionTypes'
-import MutationTypes from './enums/mutationTypes'
 
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
@@ -30,13 +29,7 @@ export default defineComponent({
     const verifyUser: Function = async (): Promise<void> => {
         try {
           if(userInStorage) {
-            const isValid = await store.dispatch(ActionTypes.VERIFY_JWT_TOKEN, userInStorage.token)
-
-            if(isValid) {
-              store.commit(MutationTypes.SET_USER, userInStorage)
-            } else {
-              store.commit(MutationTypes.RESET_AUTH, null)
-            }
+            await store.dispatch(ActionTypes.VERIFY_JWT_TOKEN, userInStorage)
           }
         } catch (err) {
           console.log(err)

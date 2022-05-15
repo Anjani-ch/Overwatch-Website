@@ -1,5 +1,5 @@
 <template>
-  <main class="main-wrapper container">
+  <main class="main-wrapper container" v-if="heroes">
     <Spinner v-if="isLoading" />
     <Alert v-if="error" title="Error" type="error" :message="error" />
     <Heroes v-else-if="!isLoading" :heroes="heroes" />

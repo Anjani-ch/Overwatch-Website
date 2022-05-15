@@ -13,7 +13,7 @@ const mutations: MutationTree<IState> & Mutations = {
     },
     [MutationTypes.RESET_AUTH](state) {
         state.user = null
-        localStorage.clear()
+        localStorage.removeItem('user')
     }
 }
 
