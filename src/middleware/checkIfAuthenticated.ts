@@ -5,7 +5,10 @@ import asyncHandler from './asyncHandler'
 
 import UnauthorizedError from '../errors/UnauthorizedError'
 
+import User from '../models/User'
+
 import IAuthReq from '../interfaces/auth/IAuthReq'
+import IUser from '../interfaces/IUser'
 
 const checkIfAuthenticated = asyncHandler(async (req: IAuthReq, res: Response, next: NextFunction): Promise<void> => {
     const headerAuthorization: string | undefined = req.headers.authorization
@@ -18,7 +21,10 @@ const checkIfAuthenticated = asyncHandler(async (req: IAuthReq, res: Response, n
             token = headerAuthorization.split(' ')[1]
 
             // Verify Token
-            jwt.verify(token, process.env.JWT_SECRET as Secret)
+            const decoded = jwt.verify(token, process.env.JWT_SECRET as Secret) as IUser
+
+            // Get User
+            req.user = await User.findById(decoded._id).select('-password') as IUser
 
             next()
         } catch (error) {

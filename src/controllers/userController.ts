@@ -4,6 +4,7 @@ import emailValidator from 'email-validator'
 import asyncHandler from '../middleware/asyncHandler'
 
 import BadRequestError from '../errors/BadRequestError'
+import UnauthorizedError from '../errors/UnauthorizedError'
 
 import User from '../models/User'
 
@@ -129,17 +130,24 @@ const loginUser = asyncHandler(async (req: Request, res: Response): Promise<void
 // @route  GET /api/users/me
 // @access Private
 const getUserData = asyncHandler(async (req: IAuthReq, res: Response): Promise<void> => {
-    const { _id, username, email } = await User.findById(req.user._id) as IUser
+    const user = await User.findById(req.user._id).select('-password') as IUser
+
+    res.json(user)
+})
+
+const deleteUser = asyncHandler(async (req: IAuthReq, res: Response): Promise<void> => {
+    const user = await User.findById(req.user._id).select('-password') as IUser
+
+    await User.deleteOne({ _id: user._id })
 
     res.json({
-        _id,
-        username,
-        email
+        msg: 'User Deleted'
     })
 })
 
 export {
     signupUser,
     loginUser,
-    getUserData
+    getUserData,
+    deleteUser
 }

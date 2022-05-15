@@ -6,7 +6,7 @@ import RequestError from '@/types/RequestError'
 import IHero from '@/interfaces/overwatch/IHero'
 import IComposable from '@/interfaces/IComposable'
 
-const getHero: IComposable<string> = key => {
+const getHero: IComposable<string> = (key) => {
   const isLoading: Ref = ref<boolean>(true)
   const data: Ref = ref<IHero[]>()
   const error: Ref = ref<RequestError>()

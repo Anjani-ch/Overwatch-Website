@@ -14,6 +14,7 @@
         </section>
 
         <FormContainer v-else @submit.prevent="handleSignup($event)">
+            <Alert class="mb-6" @closeAlert="closeAlert" v-if="redirectMsgRef" :message="redirectMsgRef" :useClose="true" :title="redirectTitleRef" :type="redirectTypeRef" />
             <Alert class="mb-6" @closeAlert="closeAlert" v-if="error" :message="error" :useClose="true" title="Error Signing Up User" type="error" />
 
             <h1 class="text-3xl">Signup</h1>
@@ -43,7 +44,7 @@
 
 <script lang="ts">
 import { defineComponent, Ref, ref, reactive } from 'vue'
-import { useRouter, Router } from 'vue-router'
+import { useRoute, useRouter, Router } from 'vue-router'
 
 import { useStore } from '@/store/store'
 
@@ -55,7 +56,6 @@ import Spinner from '@/components/Spinner.vue'
 
 import SignupData from '@/types/auth/SignupData'
 import ActionTypes from '@/enums/actionTypes'
-import IUser from '@/interfaces/IUser'
 
 export default defineComponent({
     name: 'Signup',
@@ -68,8 +68,12 @@ export default defineComponent({
     },
     setup(): object {
         const store = useStore()
+        const { params: { redirectMsg, redirectType, redirectTitle } } = useRoute()
         const router: Router = useRouter()
 
+        const redirectMsgRef: Ref = ref<string>('')
+        const redirectTypeRef: Ref = ref<string>('')
+        const redirectTitleRef: Ref = ref<string>('')
         const twoFactorRef: Ref = ref<string>('off')
         const error: Ref = ref<string>('')
         const isLoading: Ref = ref<boolean>(false)
@@ -128,7 +132,14 @@ export default defineComponent({
         }
 
         const closeAlert: Function = (): void => {
+            redirectMsgRef.value = ''
             error.value = ''
+        }
+
+        if(redirectMsg) {
+            redirectMsgRef.value = redirectMsg
+            redirectTypeRef.value = redirectType
+            redirectTitleRef.value = redirectTitle
         }
 
         return {
@@ -139,7 +150,10 @@ export default defineComponent({
             closeAlert,
             showTwoFactorInfo,
             twoFactorInfo,
-            finishSignup
+            finishSignup,
+            redirectMsgRef,
+            redirectTypeRef,
+            redirectTitleRef,
         }
     }
 })

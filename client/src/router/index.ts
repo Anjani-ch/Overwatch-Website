@@ -12,6 +12,7 @@ import HeroView from '../views/overwatch/HeroView.vue'
 import MapsView from '../views/overwatch/MapsView.vue'
 import GameModesView from '../views/overwatch/GameModesView.vue'
 import HostingDocsView from '../views/HostingDocsView.vue'
+import SettingsView from '../views/SettingsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 import IRoute from '@/interfaces/routes/IRoute'
@@ -87,6 +88,15 @@ const routes: Array<RouteRecordRaw> & IRoute[] = [
     component: HostingDocsView,
     meta: {
       title: 'Hosting',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: SettingsView,
+    meta: {
+      title: 'Settings',
       requiresAuth: true
     }
   },

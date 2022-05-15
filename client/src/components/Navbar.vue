@@ -40,6 +40,10 @@
                         <router-link :to="{ name: 'HostingDocs' }" :class="navLinkClass" :active-class="navLinkActiveClass">Hosting</router-link>
                     </li>
 
+                    <li v-if="user">
+                        <router-link :to="{ name: 'Settings' }" :class="navLinkClass" :active-class="navLinkActiveClass">Settings</router-link>
+                    </li>
+
                     <li @click="handleLogout" v-if="user">
                         <button :class="navLinkClass" :active-class="navLinkActiveClass">Logout</button>
                     </li>

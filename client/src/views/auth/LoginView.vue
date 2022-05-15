@@ -78,14 +78,13 @@ export default defineComponent({
         let passwordInput: string
         let userID: string
 
-        if(redirectMsg) {
-            redirectMsgRef.value = redirectMsg
-            redirectTypeRef.value = redirectType
-            redirectTitleRef.value = redirectTitle
-        }
-
         const finishLogin: Function = (): void => {
             router.push({ name: 'Home' })
+        }
+
+        const closeAlert: Function = (): void => {
+            redirectMsgRef.value = ''
+            error.value = ''
         }
 
         const handleTwoFactorSubmit: Function = async (e: Event): Promise<void> => {
@@ -147,6 +146,8 @@ export default defineComponent({
 
                     userID = id
                     isFirstLogin = firstLogin
+
+                    closeAlert()
                 } else {
                     finishLogin()
                 }
@@ -159,9 +160,10 @@ export default defineComponent({
             }
         }
 
-        const closeAlert: Function = (): void => {
-            redirectMsgRef.value = ''
-            error.value = ''
+        if(redirectMsg) {
+            redirectMsgRef.value = redirectMsg
+            redirectTypeRef.value = redirectType
+            redirectTitleRef.value = redirectTitle
         }
 
         return {
