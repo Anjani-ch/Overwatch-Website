@@ -6,7 +6,7 @@
         <section v-else-if="!isLoading">
             <Carousel class="hidden lg:block" :items="filterMedia(hero.medias, 'pdf')" />
 
-            <div class="grid gap-4 grid-rows-1 grid-cols-1 lg:grid-rows-2 lg:grid-cols-2">
+            <div class="grid gap-4 grid-rows-1 grid-cols-1 lg:grid-rows-1 lg:grid-cols-2">
                 <div>
                     <h1 class="text-3xl mt-0 lg:mt-9">Biography</h1>
 
