@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts">
-// https://www.youtube.com/watch?v=r2S89Hm1Uq0
 import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
