@@ -40,16 +40,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style>
-  #app {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background: rgb(236, 236, 236);
-  }
-
-  .main-wrapper {
-    flex: 1 0 auto;
-  }
-</style>

@@ -13,8 +13,8 @@
         </div>
       </div>
 
-      <div class="flex justify-center lg:justify-end flex-1 mb-10 md:mb-4 lg:mb-0">
-        <img class="w-5/6 h-5/6 sm:w-3/4 sm:h-3/4 md:w-full md:h-full lg:w-4/6 lg:h-4/6" src="../assets/overwatch-logo.svg" alt="overwatch-logo" />
+      <div class="flex justify-center flex-1 mb-10 md:mb-4 lg:justify-end lg:mb-0">
+        <img class="w-5/6 h-5/6 sm:w-3/4 sm:h-3/4 md:w-full md:h-full lg:w-3/6 lg:h-3/6 2xl:w-4/6 2xl:h-4/6" src="../assets/overwatch-logo.svg" alt="overwatch-logo" />
       </div>
     </section>
   </main>
