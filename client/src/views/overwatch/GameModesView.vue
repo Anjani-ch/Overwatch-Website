@@ -1,5 +1,5 @@
 <template>
-  <main class="main-wrapper container" v-if="gameModes">
+  <main class="main-wrapper container">
     <Spinner v-if="isLoading" />
     <Alert v-if="error" title="Error" type="error" :message="error" />
     <GameModes v-else-if="!isLoading" :gameModes="gameModes" />

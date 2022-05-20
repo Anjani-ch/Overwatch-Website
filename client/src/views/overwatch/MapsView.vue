@@ -1,5 +1,5 @@
 <template>
-  <main class="main-wrapper container" v-if="maps">
+  <main class="main-wrapper container">
     <Spinner v-if="isLoading" />
     <Alert v-if="error" type="error" title="Error" :message="error" />
     <Maps v-else-if="!isLoading" :maps="maps" />
